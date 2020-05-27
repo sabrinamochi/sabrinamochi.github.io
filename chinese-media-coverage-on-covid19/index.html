@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <title>How Chinese state media messaged about COVID-19</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Montserrat:ital,wght@0,300;0,400;0,700;0,900;1,200;1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="dev/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+    <script src="//d3js.org/d3.v4.min.js"></script> 
+   <script type="text/javascript" src="https://unpkg.com/force-in-a-box/dist/forceInABox.min.js"></script>
+    <script src="lib/jquery-3.4.1.min.js"></script>
+    <script src="lib/jquery.waypoints.min.js"></script>
+
+</head>
+
+<body>
+
+	<header>
+          
+          <div class="cover-pic" id="main-story-cover-pic">
+            <div class="header-text-container">
+              <h1>How <span class="red">Chinese state media</span> covered news in the early days of the epidemic</h1>
+              <p class="subhead">An analysis of 3,222 English-language tweets from the People's Daily</p>
+            </div>
+          </div>
+          <div class="byline-container">
+              <p class="byline">by Szu Yu Chen</p>
+          </div>
+      </header>
+
+      <main class="main-story-container">
+        <section>
+            <p class="content">
+               On Dec. 30, a Chinese ophthalmologist. Wen-Liang Li, warned his colleagues about an unknown virus circulating through Wuhan. A few days later, Li was summoned and admonished by the Public Security Bureau for spreading "false comments" on the internet.</br></br>
+				
+				Within months, that unknown virus -- the coronavirus -- had affected millions.
+				</br></br>
+
+                Yet while people in the West can read thousands of uncensored stories about the epidemic, in China, it's a different story.</br></br>
+
+                The Chinese government has taken <a href="https://cyber.fsi.stanford.edu/news/chinese-state-media-shapes-coronavirus-convo">control of the narrative</a> and <a href="https://www.nytimes.com/2020/03/14/business/media/coronavirus-china-journalists.html">cracked down</a> on coverage that challenges their story.   </br></br>
+
+               To understand how the Chinese government has attempted to shape the conversation about COVID-19, I analyzed every English tweet published by the People's Daily, the newspaper of the ruling Communist Party, between Jan. 3 and Mar. 27.  </br></br>
+
+                During the COVID-19 outbreak, this analysis reveals, the People's Daily avoids associating words like “deaths” or “died” with China. The newspaper also tends to cover a lot more information about other countries than about China, shifting the story away from its shores.  </br></br>
+            </p>
+        </section>
+        <section class="two-col">
+            <div class="chart-container-left" id="use-of-word-chart-container">
+                <div class="line-chart-title"></div>
+                <div id="use-of-word-chart"></div>
+            </div>
+            <div class="paragraph-container-right">
+            <h2>Top Words</h2></br></br>
+            <p class="right-col-text" id="use-of-word1">
+                I counted the top <span class="number-of-top-word">300</span> words used in tweets between Jan. 3 and March 27 and focused on how a few popular words were used across time to examine the tweets further.</br></br>
+            	
+            </p>
+            <p class="right-col-text" id="use-of-word2">
+                This chart shows how frequently the word “China” was used. The percentage of uses of this word had mostly been high but started to decrease in mid-February.  </br></br>
+            </p>
+            <p class="right-col-text" id="use-of-word3">
+                Tweets mentioning coronavirus increased in mid-January, surging at the beginning of February. Tweets mentioning COVID-19 sharply jumped after the International Committee on Taxonomy of Virus renamed the virus on Feb. 11.</br></br>
+            </p>
+            <p class="right-col-text" id="use-of-word4">
+                China’s COVID-19 outbreak began in January -- but at first, words tied to the outbreak, such as cases, total, number and deaths were not used often in People’s Daily tweets.</br></br>
+				It was not until after mid-February, when the epidemic hit other nations, that mentions of these words surged.</br></br>
+				This led me to my next question: What are the differences between People’s Daily tweets about China and those referencing other countries? Will the most mentioned words be different, if we divide the tweets into different groups? </br></br>
+
+            </p>
+
+        </div>
+        </section>
+
+        <section class="two-col" id="corpus-section">
+             <div class="chart-container-left" id="triangle-graph-container">
+                <div id="triangle-graph">
+                    <div class="tool-tip" id="triangle-tooltip"></div>
+                </div>
+                <div class="data-des-container">
+                    <div class="data-des-top-line"></div>
+                    <div class="data-des">Circles are positioned based on "normalized" proportion of uses of each word in each tweet group.</div>
+                </div>
+            </div>
+            <div class="paragraph-container-right">
+            <h2>Use of words in different tweet groups</h2></br></br>
+            <p class="right-col-text" id="corpus-chart1-1">
+
+                To examine that, I extracted tweets mentioning one or more country names and divided them into three tweet groups -- tweets mentioning only China, tweets mentioning countries but not China and tweets referencing China and other countries.</br></br> I visualized the results on a triangle with a tweet group in each corner. </br></br>
+
+
+            </p>
+            <p class="right-col-text" id="corpus-chart1-2-1">
+                Each circle represents a word from the top <span class="number-of-top-word">300</span> words across all tweets. The closer the circle is to one vertex, the more likely the word is to appear in that tweet group.  </br></br>
+                
+            </p> 
+            <h2>How to read the triangle plot?</h2></br></br>
+            <p class="right-col-text" id="corpus-chart-explain">
+                Each vertex represents 100% of uses of a word in the tweet group while each side represents 0%. </br></br>
+                <img src="./img/triangle-explain.png" width="100%"></img>
+            </p>
+            <p class="right-col-text" id="corpus-chart1-2-2">
+                The light red circles represent tweets in January.</br></br>
+            </p>
+             <p class="right-col-text" id="corpus-chart1-2-3"> Medium red: tweets in February. Dark red: March.  </br></br>
+            </p>
+            <p class="right-col-text" id="corpus-chart1-2-4">
+                The size of the circle is proportional to the total mentions of the word. </br></br>
+            </p>
+            <p class="right-col-text" id="corpus-chart1-3">
+            	
+                For example, this circle represents the use of “Wuhan” in January. </br></br>
+               Since this word was used more frequently in tweets mentioning only China in January, it's closer to the apex.   </br></br>
+            </p>
+            <p class="right-col-text" id="corpus-chart1-4">
+                The two other colored dots represent use of “Wuhan” in February and March.  </br></br>
+                </br></br>
+            </p>
+            <p class="right-col-text" id="corpus-chart1-5">
+                By connecting the circles representing the same word, we can see the trajectory of the word moving from one position to the others in different months. </br></br>
+            </p>
+            <p class="right-col-text" id="corpus-chart1-6">
+               Here is an overview of the top <span class="number-of-top-word">300</span> words used in the three tweet groups between Jan. 3 to Mar. 27. </br></br>
+            </p>
+            <h3>Confirmed and cases</h3>
+            <p class="right-col-text" id="corpus-chart1-7">
+                Let's take a look at the tweets referencing “confirmed” and “cases.” </br></br> 
+            </p>
+            <p class="right-col-text" id="corpus-chart1-8">
+                In January, they were mentioned no more than 25 times, respectively. </br></br> 
+            </p>
+            <p class="right-col-text" id="corpus-chart1-9">
+                As more other countries reported confirmed cases of COVID-19, the circles representing these two words move toward the tweet group mentioning other countries, but not China. </br></br> 
+                The word "cases" was used 10 times more in March than in January. </br></br>
+            </p>
+            <h3>Died and deaths</h3>
+            <p class="right-col-text" id="corpus-chart1-10">
+               Next, let's focus on the trajectories of “died” and “deaths.” </br></br>
+            </p>
+            <p class="right-col-text" id="corpus-chart1-11">
+               "Deaths" didn't appear in January, while "died" only showed up once in a tweet that mentioned other countries but not China, suggesting that People's Daily didn't use “China” and “deaths” or “died” together in any tweets in January.   </br></br>
+            </p>
+            <p class="right-col-text" id="corpus-chart1-12">
+               But those words showed up in tweets published in February and March, leaning more toward the tweet group containing countries except for China.</br></br>
+            </p>
+            <h3>Total and number</h3>
+            <p class="right-col-text" id="corpus-chart1-13">
+               Circles representing "total" and "number" have very similar trajectory. </br></br>
+            </p>
+            <p class="right-col-text" id="corpus-chart1-14">
+                “Total” and “number” appeared in January mostly in tweets mentioning China but weren’t used much. </br></br>
+            </p>
+            <p class="right-col-text" id="corpus-chart1-15">
+               Starting in February, these two words have been used a lot more in tweets referencing countries other than China.  </br></br>
+            </p> 
+
+            <h3>Supplies and donated</h3>
+            <p class="right-col-text" id="corpus-chart1-16">
+               In March, words that emphasized how China is helping other countries appeared more frequently.</br></br>
+                They are mostly mentioned in tweets referencing China and other countries together. </br></br>
+            </p>
+             <h3>Explore it yourself! </h3>
+            <p class="right-col-text last" id="corpus-chart1-17">
+               
+               Hover over the circles and you will see circles representing the same words being connected. </br></br>
+            </p> 
+
+        </div>
+        
+        </section>
+        <section id="network-graph-section">
+            <h2 class="centered-h2">What's missing from Chinese state media</h2>
+            <p class="content">
+               
+                In the second week of December, according to a study in <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)30183-5/fulltext">The Lancet</a>, Wuhan doctors had already found cases suggesting an unknown virus was spreading from one human to another — <i>"The first fatal case, who had continuous exposure to the market, was admitted to hospital because of a 7-day history of fever, cough, and dyspnoea. 5 days after illness onset, his wife, a 53-year-old woman who had no known history of exposure to the market, also presented with pneumonia and was hospitalized in the isolation ward."</i> </br></br>
+                
+                However, it was not until Jan. 20 that the Chinese government finally admitted human-to-human transmission of the coronavirus.
+
+                </br></br>
+
+               <a href="https://www.medrxiv.org/content/10.1101/2020.03.03.20029843v3.full.pdf">One study</a> published recently pointed out that if the Chinese government had started the non-pharmaceutical interventions one to three weeks earlier, the confirmed cases of COVID-19 could be reduced by more than one-third.</br></br>
+
+               As coronavirus spread in China slows down, Chinese official media have started to promote a narrative that the virus did not originate in Wuhan and that China's strategic response to COVID-19 is the model that every country should follow.</br></br>
+
+               But besides acknowledging the Chinese government's efforts to mitigate the outbreak in China, we should also pay attention to its early missteps and how its official media sought to influence the conversation about COVID-19.  </br></br>
+
+                 <!-- To prevent the next epidemic, we, as human beings, must learn from our own missteps. After all, making mistakes is not shameful, but dodging culpability is.</br></br> -->
+            </p>
+            
+            <h2 class="invisible-in-mob" style="text-align: center; margin: 2em 0 0; padding-bottom:0;">People who were penalized for talking about COVID-19 in China</h2>
+            <div class="invisible-in-mob" id="network-graph-container">
+           
+            <div class="network-graph-checkbox invisible-in-mob">
+                    <span>Group by</span>
+                    <button id="punishment" class="btn active">Punishment</button>
+                    <button id="platform" class="btn">Platform</button>
+            </div>
+            <div class="network-graph-legend invisible-in-mob">
+                <ul id="punishment-legend">
+                    <li id="detention-over-five"><span>Detention less than 5 days</span></li>
+                    <li id="detention-less-five"><span>Detention more than 5 days</span></li>
+                    <li id="admonition"><span>Admonition</span></li>
+                    <li id="fine"><span>Fine</span></li>
+                    <li class="others"><span>Others</span></li>
+                </ul>
+                <ul id="platform-legend">
+                    <li id="wechat"><span>Wechat</span></li>
+                    <li id="weibo"><span>Weibo</span></li>
+                    <li class="others"><span>Others</span></li>
+                </ul>
+            </div>
+            <div id="network-graph">
+            </div>
+            <div style="text-align: center;" class="invisible-in-mob">
+                <p class="content" style="width: 100%;">
+                    Source: <a href="https://docs.google.com/spreadsheets/d/1CQBeBpP2-A45lw-zr6mneDuPtSBNWg_8KqgXpWMLcbo/htmlview#">China Digital Times.</a> I only used the data between Jan. 1 and Mar. 22.
+                </p>
+            </div>
+        </div>
+        </section>
+        <section class="methodology-container">
+            <div class="data-des-top-line"></div>
+            
+            <div class="methodology">
+                <h4>Data and Methodology</h4>
+                 <p class="content">                
+                    <b>Collecting</b> </br>
+                    I used a Python library, Tweepy, to scrape tweets from People's Daily's English account. Due to the limited number of API calls one can make through a free developer account, I only collected 3,222 tweets between Jan. 3 and Mar. 27. </br></br>
+                    
+                    <b>Cleaning</b></br>
+                    Using Python, I removed punctuations, usernames and URLs, tokenized each sentence into a single word, and removed stop words like the, a, is, am, are, etc.</br></br> 
+                    By adding up the number of uses of each word, I got the top words across all tweets.</br></br>
+                    
+                    <b>Dividing tweets into groups</b></br>
+                    I created a list of country names to extract tweets referencing one or more countries. </br></br>
+                    The list, focusing on countries that have been struck by the epidemic severely or mentioned frequently by People's Daily, includes China, Australia, Iraq, England, UK (and United Kingdom), US (and United States), Italy, Korea, Germany, Iran, France, Finland, Portugal, Czech, Brazil, Spain, Belgium, Malaysia, Pakistan, Philippine, Taiwan and Czech. </br></br>
+                    Since many tweets mention Hubei or Wuhan solely, I included these region names as well. </br></br>
+                    I divided these tweets into three groups -- tweets referencing only China (or its provinces), tweets referencing countries other than China and tweets with China and one or more countries. </br></br>
+                    To compare the number of uses of words in three groups at the same time, I decided to use a triangle plot. </br></br>
+                    The percentage of a word is 100% in each corner of the triangle and 0% at the line opposite it. It decreases linearly with increasing distance from the vertex. </br></br> 
+                    
+                    <b>Calculating the normalized percentage of each word</b></br>
+                    I calculated the monthly percentage of uses of the top <span class="number-of-top-word">300</span> words in each tweet group, normalizing the numbers based on the total number of words used by each tweet group.</br></br> 
+                    For example, in January, "confirmed" showed up 18 times in tweets referencing only China, 4 times in tweets mentioning countries other than China and 2 times in tweets with China and one or more countries. Its unnormalized percentage in the tweet group referencing only China is 75% (18 / (18+4+2)). </br></br>
+                    In January, the total word counts in tweet group referencing only China is 5113, that in tweet group mentioning countries other than China is 865 and that in tweet group with China and one or more countries is 314. The way I calculated the normalized percentage of the same word in tweet group referencing only China is:</br></br>
+
+                    18*865*314 / (18*865*314 + 4*5113*314 + 2*865*5113) = 24.3%</br></br>
+
+                    The normalized percentage of "confirmed" in tweet group mentioning countries other than China is 31.8% and that in tweet group with China and one or more countries 43.9%. </br></br>
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="three-col">
+
+         <div>
+            <h4>Special Thanks</h4>
+            <div class="seperator"></div>
+            <p>I would like to thank Steven Braun for offering me guidance and inspirations along 
+                my design process, Matthew Carroll and Aleszu Bajak for their edits and valuable feedbacks, 
+                and John Wihbey for his helpful advice. </p>
+        </div>
+
+        <div>
+            <h4>About Me</h4>
+            <div class="seperator"></div>
+            <p>Hello there! I’m <a href="https://www.chenszuyuuu.com">Szu Yu Chen</a>, a data reporter and designer based in Boston. I’m now a graduate student at Northeastern University’s School of Journalism.</p>
+        </div>
+       
+        <div>
+            <h4>Contact Me</h4>
+            <div class="seperator"></div>
+            <p>You can reach me via email: szuyuchen0101@gmail.com</p>
+        </div>
+
+    </footer>
+    <script src="dev/line-chart.js"></script>
+    <script src="dev/triangle-graph.js"></script>
+    <script src="dev/force-layout-graph.js"></script>
+    
+</body>
+</html>
