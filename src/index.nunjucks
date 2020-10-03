@@ -1,0 +1,76 @@
+{% extends '_layouts/base.nunjucks' %}
+
+{% import "_modules/link/link.nunjucks" as link %}
+
+{% block navigator%}
+  <nav>
+      <a class="nav-button" href="https://drive.google.com/file/d/1IEMn5nR99sfPCkUtAvR4Dae8HpKykZd8/view?usp=sharing">Resume</a>
+      <a class="nav-button" href="https://medium.com/follow-the-breadcrumbs/tagged/english">Blog</a>
+  </nav>
+{% endblock %}
+
+{% block header %}
+  <header>
+        <h1>Szu Yu Chen</h1>
+        <p class="intro">
+            I write, design and code to tell good stories.
+        </p>
+  </header>
+{% endblock %}
+
+{% block projectGrid %}
+    <main>
+      <section id="content-grid">
+        <a id="terrorist" href="https://globalobserver.github.io/projects/terrorist-attacks/index.html">
+          <div class="project-intro">
+            <h3>US Terrorist Attacks</h3>
+            <p>Python, HTML, CSS, JS</p>
+          </div>
+        </a>
+        <a id="covid-map" href="https://www.bostonglobe.com/2020/03/05/world/these-maps-track-path-coronavirus/">
+          <div class="project-intro">
+            <h3>Tracking COVID-19: Map</h3>
+            <p>HTML, CSS, JS</p>
+          </div>
+        </a>
+        <a id="covid-hospital" href="https://www.bostonglobe.com/2020/03/26/nation/how-overwhelmed-could-new-england-hospitals-become-explore-maps-different-scenarios/">
+          <div class="project-intro">
+            <h3>Tracking COVID-19: Hospitals</h3>
+            <p>HTML, CSS, JS</p>
+          </div>
+        </a>
+        <a id="china-media" href="https://sabrinamochi.github.io/chinese-media-coverage-on-covid19/">
+          <div class="project-intro">
+            <h3>How Chinese Media Covered News</h3>
+            <p>Python, HTML, CSS, JS</p>
+          </div>
+        </a>
+        <a id="hk-survey" href="https://theinitium.com/project/20200820-opinion-hk-citizen-attitude-future/">
+          <div class="project-intro">
+            <h3>Opinions of HK Citizens</h3>
+            <p>HTML, CSS, JS</p>
+          </div>
+        </a>
+        <a id="grave" href="https://below-the-surface.github.io/">
+          <div class="project-intro">
+            <h3>Forgotten Below the Surface</h3>
+            <p>HTML, CSS, JS</p>
+          </div>
+        </a>
+        <a id="boston-needle" href="https://bostonopioid.github.io/discarded-needle/index.html">
+          <div class="project-intro">
+            <h3>Boston Opioid Crisis</h3>
+            <p>Python, Mapbox, HTML, CSS, JS</p>
+          </div>
+        </a>
+        <a id="kids-learn" href="https://sabrinamochi.github.io/kids/wordgrowth.html/">
+          <div class="project-intro">
+            <h3>Kids' Vocabulary Development</h3>
+            <p>HTML, CSS, JS</p>
+          </div>
+        </a>
+      </section>
+    </main>
+{% endblock %}
+
+
