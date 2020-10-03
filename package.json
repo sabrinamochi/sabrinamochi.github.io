@@ -42,7 +42,7 @@
     "gulp-rev-delete-original": "0.2.3",
     "gulp-uglify": "~3.0.2",
     "gulp-sass": "~4.0.2",
-    "acorn": "~6.2.0",
+    "acorn": "~6.4.1",
     "nunjucks": "~3.2.0",
     "gulp-nunjucks-html": "~2.0.0",
     "vinyl-buffer": "~1.0.1",
