@@ -10,5 +10,5 @@ import { Link } from '../_modules/link/link';
 
 $(() => {
   new Link(); // Activate Link modules logic
-  console.log('Welcome to Yeogurt!');
+  // console.log('Welcome to Yeogurt!');
 });
