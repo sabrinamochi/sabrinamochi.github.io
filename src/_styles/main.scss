@@ -239,7 +239,15 @@ section {
 //   font-family: "Open Sans", sans-serif;
 // }
 
+#maps {
+  background-image:url("../images/maps/mass-cass-blvd-finished-small.jpg")
+}
+
 #bpd-fio{
+  background-image:url("../images/chase.jpg")
+}
+
+#bpd-fio-analysis{
   background-image:url("../images/bpd-stop.png")
 }
 
@@ -273,6 +281,31 @@ section {
 
 #kids-learn{
   background-image:url("../images/kids-words-dev.png")
+}
+
+
+#maps-container section {
+  margin-bottom: 5rem;
+}
+
+.map-page header, #maps-container div {
+  text-align: center;
+}
+
+.map-page header .page-description {
+  margin-top: 1rem;
+}
+
+#maps-container img, #maps-container section p {
+  max-width: 60%;
+  margin: 0 auto;
+}
+
+#maps-container section p {
+  padding-top: 1rem;
+  text-align: left;
+  line-height: 150%;
+  font-size: 18px;
 }
 
 @media only screen and (max-width: 900px) {
