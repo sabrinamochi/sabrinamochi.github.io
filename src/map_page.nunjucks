@@ -29,6 +29,16 @@
     </section>
     <section>
       <div>
+        <img src="../images/maps/boston-under-water.gif">
+      </div>
+      <div>
+        <p>
+          Animated map built with QGIS and Adobe illustrator to display areas at risk of rising sea levels
+        </p>
+      </div>
+    </section>
+    <section>
+      <div>
         <img src="../images/maps/cambridge.png">
       </div>
       <div>
