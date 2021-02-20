@@ -33,21 +33,21 @@
           </div>
         </div>
         <div class="project">
-          <a target="_blank" id="bpd-fio" href="https://sabrinamochi.github.io/bpd_fio"></a>
+          <a target="_blank" id="bpd-fio" href="https://mediainnovation.camd.northeastern.edu/2020/chen/"></a>
           <div class="work-description">
-               <h3>Work in Progress: BPD Stop-and-Frisk</h3>
-              <p class="tools">Python</p>
+               <h3>BPD Stop-and-Frisk</h3>
+              <p class="tools">HTML, CSS, JS</p>
               <div class="divide"></div>
-              <p class="workload">Things I am doing: Pitching - Writing - Data Analysis - Design - Coding</p>
+              <p class="workload">Things I did: Pitching - Writing - Data Analysis - Design - Coding</p>
           </div>
         </div>
        <div class="project">
           <a target="_blank" id="bpd-fio-analysis" href="https://github.com/sabrinamochi/bpd_fio_data_analysis/blob/master/data-analysis-in-general.ipynb"></a>
           <div class="work-description">
-               <h3>Work in Progress: BPD FIO Analysis</h3>
+               <h3>BPD FIO Analysis</h3>
               <p class="tools">Python</p>
               <div class="divide"></div>
-              <p class="workload">Things I am doing: Writing - Data Analysis</p>
+              <p class="workload">Things I did: Writing - Data Analysis</p>
           </div>
         </div>
         <div class="project">
