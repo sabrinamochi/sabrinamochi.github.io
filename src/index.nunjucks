@@ -24,6 +24,15 @@
     <main>
       <section id="content-grid">
       <div class="project">
+          <a id="nyc-property" href="https://github.com/sabrinamochi/nyc_properties_analysis/blob/main/sale-price-and-median-income.md"></a>
+          <div class="work-description">
+               <h3>NYC Property Price and Median Household Income</h3>
+              <p class="tools">R</p>
+              <div class="divide"></div>
+              <p class="workload">Things I did: Data Analysis</p>
+          </div>
+        </div>
+      <div class="project">
           <a id="maps" href="map_page.html"></a>
           <div class="work-description">
                <h3>#30DayMapChallenge</h3>
