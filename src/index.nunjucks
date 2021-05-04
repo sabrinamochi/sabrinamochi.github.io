@@ -42,7 +42,7 @@
           </div>
         </div>
       <div class="project">
-          <a id="nyc-property-analysis" href="https://github.com/sabrinamochi/nyc_properties_analysis/blob/main/sale-price-and-median-income.md"></a>
+          <a id="nyc-property-analysis" href="https://sabrinamochi.github.io/3dnyc-property-price/nyc-property-data-analysis.html"></a>
           <div class="work-description">
                <h3>NYC Property Price and Median Household Income</h3>
               <p class="tools">R</p>
