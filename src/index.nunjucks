@@ -24,6 +24,33 @@
     <main>
       <section id="content-grid">
       <div class="project">
+          <a target="_blank" id="ukraine-photos" href="https://www.latimes.com/projects/ukraine-civilians-refugees-russian-invasion/"></a>
+          <div class="work-description">
+               <h3>How Ukrainian civilians are bearing the burden of Russian invasion</h3>
+              <p class="tools">QGIS, Illustrator, HTML, CSS, JS</p>
+              <div class="divide"></div>
+              <p class="workload">Things I did: Pitching - Data Analysis - Design - Coding</p>
+          </div>
+        </div>
+        <div class="project">
+          <a target="_blank" id="three-maps-ukraine" href="https://www.latimes.com/projects/russia-ukraine-invasion-maps/"></a>
+          <div class="work-description">
+               <h3>Three maps explaining the Russia-Ukraine conflict</h3>
+              <p class="tools">Datawrapper</p>
+              <div class="divide"></div>
+              <p class="workload">Things I did: Data Analysis - Design</p>
+          </div>
+        </div>
+        <div class="project">
+          <a target="_blank" id="tule-fog" href="https://www.latimes.com/projects/return-tule-fog-california-central-valley/"></a>
+          <div class="work-description">
+               <h3>The return of California’s tule fog</h3>
+              <p class="tools">Illustrator, HTML, CSS, JS</p>
+              <div class="divide"></div>
+              <p class="workload">Things I did: Design - Coding</p>
+          </div>
+        </div>
+      <div class="project">
           <a target="_blank" id="superbowl" href="https://www.latimes.com/projects/super-bowl-history-los-angeles-hosts/#nt=0000016a-0e43-dffa-a76b-3f6bfa3f0001-showMedia-liI0promoMedium-contentFooter"></a>
           <div class="work-description">
                <h3>Expect SoFi Stadium to be a regular Super Bowl host</h3>
