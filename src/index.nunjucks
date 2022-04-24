@@ -23,6 +23,15 @@
 {% block projectGrid %}
     <main>
       <section id="content-grid">
+        <div class="project">
+          <a target="_blank" id="salmon" href="https://www.latimes.com/projects/can-endangered-california-chinook-salmon-be-saved-from-extinction/"></a>
+          <div class="work-description">
+               <h3>Can the endangered winter-run Chinook be saved from extinction?</h3>
+              <p class="tools">Pandas, QGIS, Illustrator, HTML, CSS, JS</p>
+              <div class="divide"></div>
+              <p class="workload">Things I did: Pitching - Data Analysis - Design - Coding</p>
+          </div>
+        </div>
       <div class="project">
           <a target="_blank" id="ukraine-photos" href="https://www.latimes.com/projects/ukraine-civilians-refugees-russian-invasion/"></a>
           <div class="work-description">
