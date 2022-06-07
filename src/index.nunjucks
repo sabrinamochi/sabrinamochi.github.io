@@ -12,7 +12,7 @@
 
 {% block header %}
   <header>
-        <p class="intro intro-up">Hi, I'm Szu Yu. I'm a graphics journalist at <a href="https://www.latimes.com/people/szu-yu-chen/"><i>the Los Angeles Times.</i></a></p>
+        <p class="intro intro-up">Hi, I'm Szu Yu. I'm a data and graphics journalist at <a href="https://www.latimes.com/people/szu-yu-chen/"><i>the Los Angeles Times.</i></a></p>
         <h1 class="intro-title">
             I Report, Design and Code to Explain Stories.  
         </h1>
@@ -23,6 +23,15 @@
 {% block projectGrid %}
     <main>
       <section id="content-grid">
+      <div class="project">
+          <a target="_blank" id="vote-center-map" href="https://www.latimes.com/projects/2022-california-primary-election-polling-places-voting-center-ballot-drop-boxes/"></a>
+          <div class="work-description">
+               <h3>Where to vote in Southern California?</h3>
+              <p class="tools">Mapbox, HTML, CSS, JS</p>
+              <div class="divide"></div>
+              <p class="workload">Things I did: Design - Coding</p>
+          </div>
+        </div>
         <div class="project">
           <a target="_blank" id="salmon" href="https://www.latimes.com/projects/can-endangered-california-chinook-salmon-be-saved-from-extinction/"></a>
           <div class="work-description">
