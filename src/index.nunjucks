@@ -104,6 +104,15 @@
               <p class="workload">Things I did: Data Analysis - Design - Coding</p>
           </div>
         </div>
+        <div class="project">
+          <a target="_blank" id="covid-mobility" href="https://sabrinamochi.github.io/react-us-mobility/"></a>
+          <div class="work-description">
+               <h3>Where People Are Moving Again</h3>
+              <p class="tools">Python, Figma, HTML, CSS, JS</p>
+              <div class="divide"></div>
+              <p class="workload">Things I did: Writing - Data Analysis - Design - Coding</p>
+          </div>
+        </div>
       <div class="project">
           <a target="_blank" id="pregnancy" href="https://sabrinamochi.github.io/pregnancy-during-the-pandemic/index.html"></a>
           <div class="work-description">
