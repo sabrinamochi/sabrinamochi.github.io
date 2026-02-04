@@ -1,225 +1,175 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const projects = [
-  {
-    id: "vote-center-map",
-    href: "https://www.latimes.com/projects/2022-california-primary-election-polling-places-voting-center-ballot-drop-boxes/",
-    title: "Where to vote in Southern California?",
-    tools: "Mapbox, HTML, CSS, JS",
-    workload: "Things I did: Design - Coding",
-  },
-  {
-    id: "salmon",
-    href: "https://www.latimes.com/projects/can-endangered-california-chinook-salmon-be-saved-from-extinction/",
-    title: "Can the endangered winter-run Chinook be saved from extinction?",
-    tools: "Pandas, QGIS, Illustrator, HTML, CSS, JS",
-    workload: "Things I did: Pitching - Data Analysis - Design - Coding",
-  },
-  {
-    id: "ukraine-photos",
-    href: "https://www.latimes.com/projects/ukraine-civilians-refugees-russian-invasion/",
-    title: "How Ukrainian civilians are bearing the burden of Russian invasion",
-    tools: "QGIS, Illustrator, HTML, CSS, JS",
-    workload: "Things I did: Pitching - Data Analysis - Design - Coding",
-  },
-  {
-    id: "three-maps-ukraine",
-    href: "https://www.latimes.com/projects/russia-ukraine-invasion-maps/",
-    title: "Three maps explaining the Russia-Ukraine conflict",
-    tools: "Datawrapper",
-    workload: "Things I did: Data Analysis - Design",
-  },
-  {
-    id: "tule-fog",
-    href: "https://www.latimes.com/projects/return-tule-fog-california-central-valley/",
-    title: "The return of California’s tule fog",
-    tools: "Illustrator, HTML, CSS, JS",
-    workload: "Things I did: Design - Coding",
-  },
-  {
-    id: "superbowl",
-    href: "https://www.latimes.com/projects/super-bowl-history-los-angeles-hosts/#nt=0000016a-0e43-dffa-a76b-3f6bfa3f0001-showMedia-liI0promoMedium-contentFooter",
-    title: "Expect SoFi Stadium to be a regular Super Bowl host",
-    tools: "QGIS, Blender, Illustrator, HTML, CSS, JS",
-    workload: "Things I did: Design - Coding",
-  },
-  {
-    id: "fwy",
-    href: "https://www.latimes.com/projects/us-freeway-highway-expansion-black-latino-communities/#nt=0000016a-0e43-dffa-a76b-3f6bfa3f0001-showMedia-liI1promoMedium-contentFooter",
-    title: "Freeways force out residents in communities of color — again",
-    tools: "QGIS, Figma, Illustrator, HTML, CSS, JS",
-    workload: "Things I did: Design - Coding",
-  },
-  {
-    id: "boosty",
-    href: "https://www.latimes.com/projects/covid-19-vaccine-booster-am-i-eligible/#nt=00000175-c749-da42-a377-ff5f38920001-liA2promoSmall-7030col1-main",
-    title: "Is it time for your COVID-19 booster shot?",
-    tools: "Illustrator, HTML, CSS, JS",
-    workload: "Things I did: Design - Coding",
-  },
-  {
-    id: "scott-donation",
-    href: "https://www.bloomberg.com/graphics/2021-mackenzie-scott-donations/",
-    title: "Here's where MacKenzie Scott Is Donating Her Billions",
-    tools: "Python, Figma, HTML, CSS, JS",
-    workload: "Things I did: Data Analysis - Design - Coding",
-  },
-  {
-    id: "covid-mobility",
-    href: "https://sabrinamochi.github.io/react-us-mobility/",
-    title: "Where People Are Moving Again",
-    tools: "Python, Figma, HTML, CSS, JS",
-    workload: "Things I did: Writing - Data Analysis - Design - Coding",
-  },
-  {
-    id: "pregnancy",
-    href: "https://sabrinamochi.github.io/pregnancy-during-the-pandemic/index.html",
-    title: "Pregnancy During The Pandemic",
-    tools: "Python, Figma, HTML, CSS, JS",
-    workload: "Things I did: Interviews - Writing - Data Analysis - Design - Coding",
-  },
-  {
-    id: "nyc-property-3d",
-    href: "https://sabrinamochi.github.io/3dnyc-property-price/index.html",
-    title: "3D: 2019 NYC Property Price",
-    tools: "three.js",
-    workload: "Things I did: Writing - Data Analysis - Design - Coding",
-  },
-  {
-    id: "nyc-property-analysis",
-    href: "https://sabrinamochi.github.io/3dnyc-property-price/nyc-property-data-analysis.html",
-    title: "NYC Property Price and Median Household Income",
-    tools: "R",
-    workload: "Things I did: Data Analysis",
-  },
-  {
-    id: "maps",
-    href: "map_page.html",
-    title: "#30DayMapChallenge",
-    tools: "QGIS, illustrator, Photoshop",
-    workload: "Things I did: Design",
-  },
-  {
-    id: "bpd-fio",
-    href: "https://mediainnovation.camd.northeastern.edu/2020/chen/",
-    title: "BPD Stop-and-Frisk",
-    tools: "HTML, CSS, JS",
-    workload: "Things I did: Pitching - Writing - Data Analysis - Design - Coding",
-  },
-  {
-    id: "bpd-fio-analysis",
-    href: "https://github.com/sabrinamochi/bpd_fio_data_analysis/blob/master/data-analysis-in-general.ipynb",
-    title: "BPD FIO Analysis",
-    tools: "Python",
-    workload: "Things I did: Writing - Data Analysis",
-  },
-  {
-    id: "covid-hospital",
-    href: "https://www.bostonglobe.com/2020/03/26/nation/how-overwhelmed-could-new-england-hospitals-become-explore-maps-different-scenarios/",
-    title: "Tracking COVID-19: Hospitals",
-    tools: "HTML, CSS, JS",
-    workload: "Things I did: Pitching - Design - Coding",
-  },
-  {
-    id: "covid-map",
-    href: "https://www.bostonglobe.com/2020/03/05/world/these-maps-track-path-coronavirus/",
-    title: "Tracking COVID-19: Map",
-    tools: "HTML, CSS, JS",
-    workload: "Things I did: Design - Coding",
-  },
-  {
-    id: "terrorist",
-    href: "https://globalobserver.github.io/projects/terrorist-attacks/index.html",
-    title: "US Terrorist Attacks",
-    tools: "Python, HTML, CSS, JS",
-    workload: "Things I did: Pitching - Data Analysis - Design - Writing - Coding",
-  },
-  {
-    id: "china-media",
-    href: "https://sabrinamochi.github.io/chinese-media-pandemic-coverage/",
-    title: "How Chinese Media Covered News",
-    tools: "Python, HTML, CSS, JS",
-    workload: "Things I did: Data Analysis - Design - Writing - Coding",
-  },
-  {
-    id: "hk-survey",
-    href: "https://theinitium.com/project/20200820-opinion-hk-citizen-attitude-future/",
-    title: "Opinions of HK Citizens",
-    tools: "HTML, CSS, JS",
-    workload: "Things I did: Coding",
-  },
-  {
-    id: "grave",
-    href: "https://below-the-surface.github.io/",
-    title: "Forgotten Below the Surface",
-    tools: "HTML, CSS, JS",
-    workload: "Things I did: Design - Coding",
-  },
-  {
-    id: "boston-needle",
-    href: "https://bostonopioid.github.io/discarded-needle/index.html",
-    title: "Boston Opioid Crisis",
-    tools: "Python, Mapbox, HTML, CSS, JS",
-    workload: "Things I did: Pitching - Interview - Data Analysis - Design - Coding",
-  },
-  {
-    id: "kids-learn",
-    href: "https://sabrinamochi.github.io/kids/wordgrowth.html",
-    title: "Kids' Vocabulary Development",
-    tools: "HTML, CSS, JS",
-    workload: "Things I did: Writing - Data Analysis - Design - Coding",
-  },
-];
+const featured = [
+{
+title: "Tax Bill Calculator",
+subtitle: "A constraint-driven calculator powered by precomputed model outputs (no false precision).",
+built: ["Interactive tools", "Graphics & charts"],
+stack: ["Python", "JavaScript", "React", "D3"],
+demo: "/demos/tcja/1.png",
+caseStudyHref: "/work/tax-bill-calculator",
+originalHref: "",
+},
+{
+title: "Hurricane Tracker",
+subtitle: "A live map + explainer that helps readers understand risk, timing, and uncertainty.",
+built: ["Maps", "Interactive tools"],
+stack: ["JavaScript", "React", "D3", "Python", "QGIS"],
+demo: "/demos/tcja/1.png",
+caseStudyHref: "/work/hurricane-tracker",
+originalHref: "",
+},
+{
+title: "AI Writing Style Explorer",
+subtitle: "Interactive explainer that visualizes patterns that signal AI-written text.",
+built: ["Graphics & charts", "Interactive tools"],
+stack: ["JavaScript", "D3", "React"],
+demo: "/demos/tcja/1.png",
+caseStudyHref: "/work/ai-style-explorer",
+originalHref: "",
+},
+]                                                                                                      ;
+
 ---
 
 <BaseLayout title="Szu Yu Chen">
-  <nav slot="navigator">
-    <a class="nav-button" href="/">Szu Yu Chen</a>
-    <a
-      class="nav-button"
-      target="_blank"
-      rel="noopener noreferrer"
-      href="https://drive.google.com/file/d/1UGUBCSX1DWL5rqEEd5HvuKA1IGisl16y/view?usp=sharing"
-    >
-      Resume
-    </a>
-    <a
-      class="nav-button"
-      target="_blank"
-      rel="noopener noreferrer"
-      href="https://medium.com/follow-the-breadcrumbs/tagged/english"
-    >
-      Blog
-    </a>
-  </nav>
+<nav slot="navigator" class="topNav">
+<div class="topNav__inner">
+<a class="topNav__brand" href="/">Szu Yu Chen</a>
+<div class="topNav__links">
+<a href="#featured">Work</a>
+<a href="/about">About</a>
+<a href="/resume.pdf">Resume</a>
+</div>
+</div>
+</nav>
 
-  <header slot="header">
-    <p class="intro intro-up">
-      Hi, I'm Szu Yu C. I'm a data and graphics journalist at
-      <a href="https://www.latimes.com/people/szu-yu-chen/" target="_blank" rel="noopener noreferrer">
-        <i>the Los Angeles Times.</i>
-      </a>
-    </p>
+<header slot="header" class="hero">
+<div class="hero__inner">
+<div class="hero__copy">
+<h1>Hi, I build interactive explainers and data tools.</h1>
+<p class="hero__lede">
+I design + code front-end systems that help readers understand complex topics — taxes, elections, climate, AI.
+</p>
 
-    <h1 class="intro-title">I Report, Design and Code to Explain Stories.</h1>
-    <p class="intro intro-down"></p>
-  </header>
+<div class="ctaRow">
+<a class="btn btn--primary" href="#featured">View featured work</a>
+<a class="btn" href="/resume.pdf">Resume</a>
+<a class="btn" href="https://github.com/yourusername" target="_blank" rel="noreferrer">GitHub</a>
+</div>
+</div>
 
-  <main slot="main">
-    <section id="content-grid">
-      {projects.map((p) => (
-        <div class="project">
-          <a target="_blank" rel="noopener noreferrer" id={p.id} href={p.href}></a>
+</div>
+</header>
 
-          <div class="work-description">
-            <h3>{p.title}</h3>
-            <p class="tools">{p.tools}</p>
-            <div class="divide"></div>
-            <p class="workload">{p.workload}</p>
-          </div>
-        </div>
+<main slot="main">
+<section id="featured" class="section">
+<div class="section__head">
+<h2>Featured projects</h2>
+<p>Case studies with demos, decisions, and implementation details (paywall-proof).</p>
+</div>
+
+<div class="featuredList">
+{featured.map((p) => (
+<article class="featured">
+<div class="featured__media">
+<image
+class="featured__video"
+src={p.demo}
+muted
+autoplay
+loop
+playsinline
+preload="metadata"
+/>
+</div>
+
+<div class="featured__body">
+
+<h3 class="featured__title">{p.title}</h3>
+<p class="featured__subtitle">{p.subtitle}</p>
+
+<dl class="spec">
+  <div class="spec__row">
+    <dt>What I built</dt>
+    <dd class="spec__list">
+      {p.built.map((x, i) => (
+        <>
+          <span class="spec__item">{x}</span>
+          {i < p.built.length - 1 ? <span class="spec__sep">/</span> : null}
+        </>
       ))}
-    </section>
-  </main>
+    </dd>
+  </div>
+
+  <div class="spec__row">
+    <dt>Stack</dt>
+    <dd class="spec__chips">
+      {p.stack.map((x) => (
+        <span class="chip chip--stack">{x}</span>
+      ))}
+    </dd>
+  </div>
+</dl>
+
+
+<div class="linkRow">
+<a class="link link--primary" href={p.caseStudyHref}>Case study →</a>
+{p.originalHref ? (
+<a class="link" href={p.originalHref} target="_blank" rel="noreferrer">
+Original ↗ <span class="muted">(paywalled)</span>
+</a>
+) : null}
+</div>
+</div>
+</article>
+))}
+</div>
+</section>
+
+<section class="section section--soft">
+<div class="section__head">
+<h2>What I build</h2>
+<p>
+Front-end experiences and data tools designed for clarity and trust — built to perform on deadline and at scale.
+</p>
+</div>
+
+<div class="capGrid">
+<div class="capCard">
+<h3>Interactive tools</h3>
+<p>Calculators, dashboards, scenario explorers, and constraint-driven interfaces that avoid misleading precision.</p>
+</div>
+
+<div class="capCard">
+<h3>Graphics charts</h3>
+<p>D3-driven charts, animated explainers, scrollytelling components, and reusable visual primitives.</p>
+</div>
+
+<div class="capCard">
+<h3>Maps</h3>
+<p>MapLibre-based interactives, spatial storytelling, tiling/performance strategies, and geodata handling.</p>
+</div>
+
+<div class="capCard">
+<h3>Data + build pipeline</h3>
+<p>Python analysis + preprocessing, clean handoff formats, and fast front-end delivery with documented assumptions.</p>
+</div>
+</div>
+</section>
+
+<footer class="footer">
+<div class="footer__inner">
+<div class="footer__left">© {new Date().getFullYear()} Szu Yu Chen</div>
+<div class="footer__right">
+<a href="mailto:you@email.com">Email</a>
+<span class="dot">•</span>
+<a href="https://github.com/yourusername" target="_blank" rel="noreferrer">GitHub</a>
+<span class="dot">•</span>
+<a href="/resume.pdf">Resume</a>
+</div>
+</div>
+</footer>
+</main>
 </BaseLayout>
