@@ -1,0 +1,84 @@
+---
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+
+const page = {
+title: "L.A. mayor's race",
+intro: [
+"This interactive explains the 2022 Los Angeles mayoral election at the neighborhood level, allowing readers to search their address and see results for their precinct, city council district and surrounding areas.",
+"The experience combines geospatial joins, custom Mapbox visualizations and small-multiple charts to turn complex civic data into something personal and intuitive."
+],
+links: [{ label: "Live project", href: "https://www.latimes.com/projects/2022-california-election-neighborhood-vote-los-angeles-mayor/" }],
+heroImage: "/demos/lat-mayor/3.png",
+}                                                                                                                                                                                                            ;
+
+const gridImages = [
+
+
+]   ;
+---
+
+<CaseStudyLayout title={`${page.title} — Szu Yu Chen`}>
+{/* HERO */}
+<header class="csHero">
+<div class="csHero__text">
+<h1 class="csHero__title">{page.title}</h1>
+
+{page.intro.map((p) => <p class="csHero__p">{p}</p>)}
+
+<div class="csHero__links">
+{page.links.map((l) => (
+<a class="csLink" href={l.href} target="_blank" rel="noreferrer">
+{l.label}
+</a>
+))}
+</div>
+</div>
+
+<figure class="csHero__media">
+<img src={page.heroImage} alt="" loading="lazy" decoding="async" />
+</figure>
+</header>
+
+{/* BIG IMAGE + SIDE CAPTION */}
+<section class="csBlock">
+<figure class="csFrame">
+<img src="/demos/lat-mayor/2.mov" alt="" loading="lazy" decoding="async" />
+</figure>
+<aside class="csAside">
+ Enter an address to see precise results for your voting precinct, council district and neighborhood
+</aside>
+</section>
+
+{/* BIG IMAGE + SIDE CAPTION */}
+<section class="csBlock-imgR">
+
+<aside class="csAside">
+Side-by-side maps compare your neighborhood with your city council district. 
+</aside>
+<figure class="csFrame">
+<img src="/demos/lat-mayor/5.png" alt="" loading="lazy" decoding="async" />
+</figure>
+</section>
+
+{/* BIG IMAGE + SIDE CAPTION */}
+<section class="csBlock">
+<figure class="csFrame">
+<img src="/demos/lat-mayor/6.png" alt="" loading="lazy" decoding="async" />
+</figure>
+<aside class="csAside">
+ The tool also compares your neighborhood with demographically similar areas, highlighting where support for Bass or Caruso was strongest.
+</aside>
+</section>
+
+
+
+{/* FINAL WIDE FRAME */}
+<section class="csCenter">
+<figure class="csFrame csFrame--letterbox">
+<img src="/demos/lat-mayor/4.png" alt="" loading="lazy" decoding="async" />
+</figure>
+<p class="csCaption csCaption--center">
+Each bar represents a neighborhood, colored by margin of victory, revealing how voting patterns shift across Latino, Black, Asian, white and income groups.
+</p>
+</section>
+</CaseStudyLayout>

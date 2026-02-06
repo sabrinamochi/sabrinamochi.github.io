@@ -57,7 +57,16 @@ stack: ["JavaScript", "Mapbox"],
 demo: "/demos/lat-ballot/3.mov",
 caseStudyHref: "/work/lat-ballot",
 },
-]                                                                                                      ;
+{
+title: "L.A. mayor’s race",
+subtitle: "An interactive map that lets Angelenos see how their neighborhood and similar communities voted in the mayor’s race.",
+publication: "L.A. Times",
+built: ["Interactive tools"],
+stack: ["JavaScript", "Mapbox"],
+demo: "/demos/lat-mayor/1.mov",
+caseStudyHref: "/work/lat-mayor",
+},
+]                                                                                                                                   ;
 
 ---
 
@@ -66,9 +75,9 @@ caseStudyHref: "/work/lat-ballot",
 <div class="topNav__inner">
 <a class="topNav__brand" href="/">Szu Yu Chen</a>
 <div class="csNav__links">
-      <a href="/#featured">work</a>
-      <a href="https://www.linkedin.com/in/szu-yu-chen-435760159/">info</a>
-    </div>
+<a href="/#featured">work</a>
+<a href="https://www.linkedin.com/in/szu-yu-chen-435760159/">info</a>
+</div>
 </div>
 </nav>
 
@@ -79,7 +88,6 @@ caseStudyHref: "/work/lat-ballot",
 <p class="hero__lede">
 I design and build tools that help readers understand complex topics.
 </p>
-
 
 </div>
 
@@ -92,42 +100,36 @@ I design and build tools that help readers understand complex topics.
 <h2>Selected work</h2>
 </div>
 
-
-
 <div class="projectGrid">
-  {featured.map((p) => (
-    <a data-publication={p.publication} class="projectTile" href={p.caseStudyHref} aria-label={`Open case study: ${p.title}`}>
-      <div class="projectTile__media" aria-hidden="true">
-        <img class="projectTile__img" src={p.demo} alt="" loading="lazy" decoding="async" />
-      </div>
+{featured.map((p) => (
+<a data-publication={p.publication} class="projectTile" href={p.caseStudyHref} aria-label={`Open case study: ${p.title}`}>
+<div class="projectTile__media" aria-hidden="true">
+<img class="projectTile__img" src={p.demo} alt="" loading="lazy" decoding="async" />
+</div>
 
-      <div class="projectTile__overlay">
-        <h3 class="projectTile__title">{p.title}</h3>
-        <p class="projectTile__subtitle">{p.subtitle}</p>
+<div class="projectTile__overlay">
+<h3 class="projectTile__title">{p.title}</h3>
+<p class="projectTile__subtitle">{p.subtitle}</p>
 
-        <div class="projectTile__meta">
+<div class="projectTile__meta">
 
+<div class="projectTile__chips" aria-label="Tech stack">
+{p.stack.slice(0, 4).map((x) => (
+<span class="chip chip--tile">{x}</span>
+))}
+</div>
+</div>
 
-          <div class="projectTile__chips" aria-label="Tech stack">
-            {p.stack.slice(0, 4).map((x) => (
-              <span class="chip chip--tile">{x}</span>
-            ))}
-          </div>
-        </div>
-
-        <div class="projectTile__cta" aria-hidden="true">
-          <span>Case study</span>
-          <span class="projectTile__arrow">→</span>
-        </div>
-      </div>
-    </a>
-  ))}
+<div class="projectTile__cta" aria-hidden="true">
+<span>Case study</span>
+<span class="projectTile__arrow">→</span>
+</div>
+</div>
+</a>
+))}
 </div>
 
 </section>
-
-
-
 
 <footer class="footer">
 <div class="footer__inner">
@@ -141,4 +143,51 @@ I design and build tools that help readers understand complex topics.
 </div>
 </footer>
 </main>
+<script is:inline>
+// Prevent double-initialization (very common cause of memory growth)
+if (!window.__pubCursorInit) {
+window.__pubCursorInit = true                                           ;
+
+const cursor = document.getElementById("pubCursor");
+if (!cursor) console.warn("pubCursor element not found");
+
+let x = 0, y = 0 ;
+let raf = 0      ;
+
+const onMove = (e) => {
+x = e.clientX                                             ;
+y = e.clientY                                             ;
+if (!raf) {
+raf = requestAnimationFrame(() => {
+raf = 0                                                   ;
+// translate is cheaper than left/top
+cursor.style.transform = `translate3d(${x}px, ${y}px, 0)` ;
+})                                                        ;
+}
+}                                                         ;
+
+const onEnter = (el) => {
+cursor.textContent = el.dataset.publication || "";
+cursor.classList.add("is-visible");
+}                                                  ;
+
+const onLeave = () => {
+cursor.classList.remove("is-visible");
+}                                      ;
+
+document.addEventListener("pointermove", onMove, { passive: true }) ;
+
+// Event delegation = fewer listeners than adding to every element
+document.addEventListener("pointerover", (e) => {
+const el = e.target.closest("[data-publication]");
+if (el) onEnter(el)                                                ;
+})                                                                 ;
+
+document.addEventListener("pointerout", (e) => {
+const el = e.target.closest("[data-publication]");
+if (el) onLeave()                                  ;
+})                                                 ;
+}
+</script>
+
 </BaseLayout>

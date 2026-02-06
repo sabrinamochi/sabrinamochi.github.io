@@ -113,7 +113,7 @@ h3 {
 }
 
 
-.pubCursor {
+#pubCursor {
   position: fixed;
   top: 0;
   left: 0;
@@ -144,9 +144,13 @@ h3 {
   text-align: center;
 }
 
-.pubCursor.is-visible {
+#pubCursor.is-visible {
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
+}
+
+[data-publication] {
+  cursor: none; /* or cursor: default; if you’re not hiding OS cursor globally */
 }
 
 
@@ -263,6 +267,7 @@ h3 {
 .projectGrid a {
   cursor: none;
 }
+
 
 .projectTile {
   position: relative;
