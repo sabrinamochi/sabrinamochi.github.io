@@ -16,7 +16,6 @@ const gridImages = [
 { src: "/demos/ai-attractive/7.png", alt: "Profile selection" },
 { src: "/demos/ai-attractive/8.png", alt: "Profile selection" },
 
-
 ]   ;
 ---
 
@@ -38,17 +37,26 @@ const gridImages = [
 </div>
 
 <figure class="csHero__media">
-<img src={page.heroImage} alt="" loading="lazy" decoding="async" />
+<video src={page.heroImage}
+autoplay
+loop
+muted
+playsinline
+preload="metadata"/>
 </figure>
 </header>
 
 {/* BIG IMAGE + SIDE CAPTION */}
 <section class="csBlock">
 <figure class="csFrame">
-<img src="/demos/ai-attractive/3.mov" alt="" loading="lazy" decoding="async" />
+<video src="/demos/ai-attractive/3.mov" autoplay
+loop
+muted
+playsinline
+preload="metadata" />
 </figure>
 <aside class="csAside">
-  “Normal” defaulted to thin and light-skinned. Hundreds of images showed minimal variation in body type or appearance.
+“Normal” defaulted to thin and light-skinned. Hundreds of images showed minimal variation in body type or appearance.
 </aside>
 </section>
 
@@ -59,16 +67,22 @@ const gridImages = [
 Even when explicitly asked to “make her belly fatter,” the system returned women with only subtle changes, preserving thin silhouettes. The models appeared reluctant to generate bodies outside a narrow ideal.
 </aside>
 <figure class="csFrame">
-<img src="/demos/ai-attractive/4.mov" alt="" loading="lazy" decoding="async" />
+<video src="/demos/ai-attractive/4.mov" autoplay
+loop
+muted
+playsinline
+preload="metadata" />
 </figure>
 </section>
-
-
 
 {/* FINAL WIDE FRAME */}
 <section class="csCenter">
 <figure class="csFrame csFrame--letterbox">
-<img src="/demos/ai-attractive/5.mov" alt="" loading="lazy" decoding="async" />
+<video src="/demos/ai-attractive/5.mov" autoplay
+loop
+muted
+playsinline
+preload="metadata"/>
 </figure>
 <p class="csCaption csCaption--center">When prompted to generate a woman with a wide nose, the tools struggled to reflect the request.
 Across models, fewer than a quarter of portraits showed realistically wider features. Many images either ignored the instruction entirely or produced distorted, cartoon-like faces.</p>

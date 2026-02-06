@@ -9,10 +9,9 @@ intro: [
 ],
 links: [{ label: "Live project", href: "https://www.latimes.com/projects/2022-california-election-neighborhood-vote-los-angeles-mayor/" }],
 heroImage: "/demos/lat-mayor/3.png",
-}                                                                                                                                                                                                            ;
+}                                                                                                                                                                                                                       ;
 
 const gridImages = [
-
 
 ]   ;
 ---
@@ -42,10 +41,14 @@ const gridImages = [
 {/* BIG IMAGE + SIDE CAPTION */}
 <section class="csBlock">
 <figure class="csFrame">
-<img src="/demos/lat-mayor/2.mov" alt="" loading="lazy" decoding="async" />
+<video src="/demos/lat-mayor/2.mov" autoplay
+loop
+muted
+playsinline
+preload="metadata"/>
 </figure>
 <aside class="csAside">
- Enter an address to see precise results for your voting precinct, council district and neighborhood
+Enter an address to see precise results for your voting precinct, council district and neighborhood
 </aside>
 </section>
 
@@ -53,7 +56,7 @@ const gridImages = [
 <section class="csBlock-imgR">
 
 <aside class="csAside">
-Side-by-side maps compare your neighborhood with your city council district. 
+Side-by-side maps compare your neighborhood with your city council district.
 </aside>
 <figure class="csFrame">
 <img src="/demos/lat-mayor/5.png" alt="" loading="lazy" decoding="async" />
@@ -66,11 +69,9 @@ Side-by-side maps compare your neighborhood with your city council district.
 <img src="/demos/lat-mayor/6.png" alt="" loading="lazy" decoding="async" />
 </figure>
 <aside class="csAside">
- The tool also compares your neighborhood with demographically similar areas, highlighting where support for Bass or Caruso was strongest.
+The tool also compares your neighborhood with demographically similar areas, highlighting where support for Bass or Caruso was strongest.
 </aside>
 </section>
-
-
 
 {/* FINAL WIDE FRAME */}
 <section class="csCenter">

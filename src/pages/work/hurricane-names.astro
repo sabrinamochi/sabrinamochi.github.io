@@ -35,14 +35,22 @@ const gridImages = [
 </div>
 
 <figure class="csHero__media">
-<img src={page.heroImage} alt="" loading="lazy" decoding="async" />
+<video src={page.heroImage}  autoplay
+            loop
+            muted
+            playsinline
+            preload="metadata" />
 </figure>
 </header>
 
 {/* BIG IMAGE + SIDE CAPTION */}
 <section class="csBlock">
 <figure class="csFrame">
-<img src="/demos/hurricane-names/2.mov" alt="" loading="lazy" decoding="async" />
+<video src="/demos/hurricane-names/2.mov"  autoplay
+            loop
+            muted
+            playsinline
+            preload="metadata" />
 </figure>
 <aside class="csAside">
   Readers can test whether a name fits hurricane-naming rules by typing it into a search box.

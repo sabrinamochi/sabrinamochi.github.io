@@ -37,14 +37,22 @@ const gridImages = [
 </div>
 
 <figure class="csHero__media">
-<img src={page.heroImage} alt="" loading="lazy" decoding="async" />
+<video src={page.heroImage} autoplay
+loop
+muted
+playsinline
+preload="metadata" />
 </figure>
 </header>
 
 {/* BIG IMAGE + SIDE CAPTION */}
 <section class="csBlock">
 <figure class="csFrame">
-<img src="/demos/debt/vid3.mov" alt="" loading="lazy" decoding="async" />
+<video src="/demos/debt/vid3.mov" autoplay
+loop
+muted
+playsinline
+preload="metadata" />
 </figure>
 <aside class="csAside">
 The reverse side provides reporting context — benefits, costs and tradeoffs — so choices are informed rather than abstract.

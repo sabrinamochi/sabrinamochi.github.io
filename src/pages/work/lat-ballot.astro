@@ -8,10 +8,9 @@ intro: [
 ],
 links: [{ label: "Live project", href: "https://www.latimes.com/projects/2022-california-primary-election-polling-places-voting-center-ballot-drop-boxes/?terminal=true" }],
 heroImage: "/demos/lat-ballot/1.png",
-}                                                                                                                                                                                                            ;
+}                                                                                                                                                                            ;
 
 const gridImages = [
-
 
 ]   ;
 ---
@@ -41,7 +40,11 @@ const gridImages = [
 {/* BIG IMAGE + SIDE CAPTION */}
 <section class="csBlock">
 <figure class="csFrame">
-<img src="/demos/lat-ballot/3.mov" alt="" loading="lazy" decoding="async" />
+<video src="/demos/lat-ballot/3.mov" autoplay
+loop
+muted
+playsinline
+preload="metadata"/>
 </figure>
 <aside class="csAside">
 The map shows voting centers and ballot drop boxes across Southern California.
@@ -55,11 +58,13 @@ The map shows voting centers and ballot drop boxes across Southern California.
 Enter your address to see the nearest locations, complete with hours, distance and travel time.
 </aside>
 <figure class="csFrame">
-<img src="/demos/lat-ballot/4.mov" alt="" loading="lazy" decoding="async" />
+<video src="/demos/lat-ballot/4.mov" autoplay
+loop
+muted
+playsinline
+preload="metadata"/>
 </figure>
 </section>
-
-
 
 {/* FINAL WIDE FRAME */}
 <section class="csCenter">
