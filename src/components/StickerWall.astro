@@ -1,0 +1,124 @@
+---
+// index.astro (or put this in a component and import it)
+
+const stickers = [
+  // emoji, top, left, rotate(deg), size(px)
+  ["🐕",  "18%", "72%",  12, 64],
+  ["🎤",  "22%", "18%", -10, 56],
+  ["📍",  "62%", "78%",   8, 52],
+  ["⚾",  "14%", "88%",  10, 60],
+  ["🗓️",  "72%", "22%", -14, 58],
+  ["💬",  "40%", "10%",  -6, 54],
+  ["🔗",  "30%", "30%",  18, 52],
+  ["🧠",  "78%", "66%",  -8, 56],
+  ["📊",  "58%", "12%",   9, 58],
+  ["🗺️",  "36%", "86%", -12, 56],
+  ["✨",  "84%", "40%",  14, 54],
+];
+---
+
+
+<section class="stickerWall" aria-label="Contact section">
+  <div class="stickerWall__inner">
+    <!-- Clickable stickers -->
+    {stickers.map(([emoji, top, left, rot, size, msg, href], i) => (
+      <button
+        class="sticker"
+        type="button"
+        style={`top:${top}; left:${left}; transform: rotate(${rot}deg); font-size:${size}px;`}
+        data-msg={msg}
+        data-href={href}
+        aria-label={`Sticker ${i + 1}: ${msg}`}
+      >
+        <span aria-hidden="true">{emoji}</span>
+      </button>
+    ))}
+
+    <!-- Center card stack -->
+    <div class="cardStack">
+      <div class="card">
+        <div class="card__meta">8 / 9</div>
+        <h2 class="card__title">Want to work together?</h2>
+        <p class="card__sub">Freelance, full-time, or a quick intro call.</p>
+
+        <div class="card__actions">
+          <a class="btn" href="mailto:szuyuchen0101@gmail.com">Email me ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bubble (positioned dynamically) -->
+    <div class="stickerTip" id="stickerTip" role="status" aria-live="polite" hidden>
+      <div class="stickerTip__bubble" id="stickerTipBubble"></div>
+    </div>
+  </div>
+
+  <script is:inline>
+    const tip = document.getElementById("stickerTip");
+    const bubble = document.getElementById("stickerTipBubble");
+    const stickers = document.querySelectorAll(".stickerWall .sticker");
+
+    function showTip(target, text) {
+      bubble.textContent = text;
+
+      // Position bubble near the clicked sticker (relative to the inner container)
+      const inner = target.closest(".stickerWall__inner");
+      const innerRect = inner.getBoundingClientRect();
+      const r = target.getBoundingClientRect();
+
+      const x = r.left - innerRect.left + r.width / 2;
+      const y = r.top - innerRect.top - 14; // above sticker
+
+      tip.style.left = `${x}px`;
+      tip.style.top = `${y}px`;
+      tip.hidden = false;
+
+      // small pop animation reset
+      bubble.animate(
+        [{ transform: "translate(-50%, -100%) scale(0.98)", opacity: 0.0 },
+         { transform: "translate(-50%, -100%) scale(1)", opacity: 1 }],
+        { duration: 140, easing: "ease-out" }
+      );
+    }
+
+    function hideTip() {
+      tip.hidden = true;
+    }
+
+    stickers.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const msg = btn.dataset.msg || "";
+        const href = btn.dataset.href || "";
+        showTip(btn, msg);
+
+        // Optional: click again to follow link
+        // (You can remove this if you only want the bubble)
+        if (href) {
+          // If you want immediate navigation instead, replace with: window.location.href = href;
+          // Here: second click navigates.
+          btn.dataset.armed = btn.dataset.armed === "1" ? "0" : "1";
+          if (btn.dataset.armed === "1") {
+            bubble.textContent = `${msg} (click again to open)`;
+          } else {
+            window.open(href, href.startsWith("/") ? "_self" : "_blank", "noopener,noreferrer");
+          }
+        }
+      });
+    });
+
+    // Click outside closes
+    document.addEventListener("click", (e) => {
+      const inside = e.target.closest(".stickerWall__inner");
+      const isSticker = e.target.closest(".sticker");
+      if (inside && !isSticker) hideTip();
+    });
+
+    // Esc closes
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") hideTip();
+    });
+  </script>
+
+  <style>
+    </style>
+</section>

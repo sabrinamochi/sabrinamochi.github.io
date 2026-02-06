@@ -1,0 +1,72 @@
+---
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+
+const page = {
+title: "Hurricane names",
+intro: [
+"Not every name can become a hurricane. The World Meteorological Organization favors names that are short, easy to pronounce, distinctive and free of controversy so they’re clear in emergencies. Type a name to see how it stacks up against the same criteria used to build official storm lists."
+],
+links: [{ label: "Live project", href: "https://www.washingtonpost.com/weather/interactive/2025/hurricane-names-list-storm-naming/" }],
+heroImage: "/demos/hurricane-names/1.mov",
+}                                                                                                                                                                                                            ;
+
+const gridImages = [
+
+
+
+]   ;
+---
+
+<CaseStudyLayout title={`${page.title} — Szu Yu Chen`}>
+{/* HERO */}
+<header class="csHero">
+<div class="csHero__text">
+<h1 class="csHero__title">{page.title}</h1>
+
+{page.intro.map((p) => <p class="csHero__p">{p}</p>)}
+
+<div class="csHero__links">
+{page.links.map((l) => (
+<a class="csLink" href={l.href} target="_blank" rel="noreferrer">
+{l.label}
+</a>
+))}
+</div>
+</div>
+
+<figure class="csHero__media">
+<img src={page.heroImage} alt="" loading="lazy" decoding="async" />
+</figure>
+</header>
+
+{/* BIG IMAGE + SIDE CAPTION */}
+<section class="csBlock">
+<figure class="csFrame">
+<img src="/demos/hurricane-names/2.mov" alt="" loading="lazy" decoding="async" />
+</figure>
+<aside class="csAside">
+  Readers can test whether a name fits hurricane-naming rules by typing it into a search box.
+</aside>
+</section>
+
+{/* BIG IMAGE + SIDE CAPTION */}
+<section class="csBlock-imgR">
+
+<aside class="csAside">
+The tool evaluates each name against key World Meteorological Organization criteria — length, pronunciation, uniqueness and non-notability — and explains where it passes or fails.
+</aside>
+<figure class="csFrame">
+<img src="/demos/hurricane-names/3.png" alt="" loading="lazy" decoding="async" />
+</figure>
+</section>
+
+
+
+{/* FINAL WIDE FRAME */}
+<section class="csCenter">
+<figure class="csFrame csFrame--letterbox">
+<img src="/demos/hurricane-names/5.png" alt="" loading="lazy" decoding="async" />
+</figure>
+<p class="csCaption csCaption--center">A winding timeline traces retired Atlantic storm names from the 1950s through the 1970s, when hurricanes were exclusively given women’s names.</p>
+</section>
+</CaseStudyLayout>

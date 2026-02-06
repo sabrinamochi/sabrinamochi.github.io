@@ -1,10 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-
+import StickerWall from "../components/stickerWall.astro";
 const featured = [
 {
 title: "Tax bill calculator",
 subtitle: "A calculator powered by precomputed model outputs.",
+publication: "WaPo",
 built: ["Interactive tools", "Graphics & charts"],
 stack: ["Python", "JavaScript", "React", "D3"],
 demo: "/demos/tcja/1.png",
@@ -14,6 +15,7 @@ originalHref: "https://www.washingtonpost.com/business/interactive/2025/trump-bi
 {
 title: "Debt game",
 subtitle: "Swipe through policy cards, weigh tradeoffs, and watch the fiscal math update in real time.",
+publication: "WaPo",
 built: ["Maps", "Interactive tools"],
 stack: ["JavaScript", "React", "D3"],
 demo: "/demos/debt/vid.mov",
@@ -22,6 +24,7 @@ caseStudyHref: "/work/debt",
 {
 title: "Eclipse calculator",
 subtitle: "An interactive eclipse calculator that personalizes the sky.",
+publication: "WaPo",
 built: ["Graphics & charts", "Interactive tools"],
 stack: ["JavaScript", "D3", "React"],
 demo: "/demos/eclipse/vid.mov",
@@ -29,11 +32,30 @@ caseStudyHref: "/work/eclipse",
 },
 {
 title: "AI beauty",
-subtitle: "An interactive eclipse calculator that personalizes the sky.",
+subtitle: "A visual investigation into how AI models imagine beauty.",
+publication: "WaPo",
 built: ["Graphics & charts", "Interactive tools"],
 stack: ["JavaScript", "React", "DALL-E", "Stable diffusion"],
-demo: "/demos/ai-attractive/1.png",
+demo: "/demos/ai-attractive/2.mov",
 caseStudyHref: "/work/ai-attractive",
+},
+{
+title: "Hurricane names",
+subtitle: "Not every name is storm-ready. Type one in and see whether it could earn a spot on the hurricane list.",
+publication: "WaPo",
+built: ["Graphics & charts", "Interactive tools"],
+stack: ["JavaScript", "React"],
+demo: "/demos/hurricane-names/1.mov",
+caseStudyHref: "/work/hurricane-names",
+},
+{
+title: "L.A. ballot map",
+subtitle: "Type your address to quickly find nearby ballot drop boxes and voting centers.",
+publication: "L.A. Times",
+built: ["Interactive tools"],
+stack: ["JavaScript", "Mapbox"],
+demo: "/demos/lat-ballot/3.mov",
+caseStudyHref: "/work/lat-ballot",
 },
 ]                                                                                                      ;
 
@@ -70,9 +92,11 @@ I design and build tools that help readers understand complex topics.
 <h2>Selected work</h2>
 </div>
 
+
+
 <div class="projectGrid">
   {featured.map((p) => (
-    <a class="projectTile" href={p.caseStudyHref} aria-label={`Open case study: ${p.title}`}>
+    <a data-publication={p.publication} class="projectTile" href={p.caseStudyHref} aria-label={`Open case study: ${p.title}`}>
       <div class="projectTile__media" aria-hidden="true">
         <img class="projectTile__img" src={p.demo} alt="" loading="lazy" decoding="async" />
       </div>
@@ -102,36 +126,8 @@ I design and build tools that help readers understand complex topics.
 
 </section>
 
-<section class="section section--soft">
-<div class="section__head">
-<h2>What I build</h2>
-<p>
-Front-end experiences and data tools designed for clarity and trust — built to perform on deadline and at scale.
-</p>
-</div>
 
-<div class="capGrid">
-<div class="capCard">
-<h3>Interactive tools</h3>
-<p>Calculators, dashboards, scenario explorers, and constraint-driven interfaces that avoid misleading precision.</p>
-</div>
 
-<div class="capCard">
-<h3>Graphics charts</h3>
-<p>D3-driven charts, animated explainers, scrollytelling components, and reusable visual primitives.</p>
-</div>
-
-<div class="capCard">
-<h3>Maps</h3>
-<p>MapLibre-based interactives, spatial storytelling, tiling/performance strategies, and geodata handling.</p>
-</div>
-
-<div class="capCard">
-<h3>Data + build pipeline</h3>
-<p>Python analysis + preprocessing, clean handoff formats, and fast front-end delivery with documented assumptions.</p>
-</div>
-</div>
-</section>
 
 <footer class="footer">
 <div class="footer__inner">

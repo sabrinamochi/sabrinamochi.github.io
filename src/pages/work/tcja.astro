@@ -2,10 +2,9 @@
 import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
 
 const page = {
-title: "Tax Bill Calculator",
+title: "Tax bill calculator",
 intro: [
-"A constraint-driven calculator built with exclusive Wharton model outputs to show how the final tax bill changes household finances.",
-"Readers start by choosing a household profile instead of typing open-ended numbers, ensuring every result matches a modeled scenario."
+"A constraint-driven calculator built with exclusive Wharton model outputs to show how the final tax bill changes household finances."
 ],
 links: [{ label: "Live project", href: "https://www.washingtonpost.com/business/interactive/2025/trump-big-beautiful-bill-your-taxes-cuts/" }],
 heroImage: "/demos/tcja/10.png",
@@ -64,17 +63,15 @@ Side-by-side comparisons help readers see who benefits most — and who sees gai
 
 {/* 2x3 GRID + CENTER CAPTION (NYT-like moment) */}
 <section class="csGridBlock">
-<div class="csGrid">
-{gridImages.map((img) => (
-<figure class="csTile">
-<img src={img.src} alt={img.alt} loading="lazy" decoding="async" />
-</figure>
-))}
-</div>
+  <div class="csGrid csGrid--featured">
+    {gridImages.map((img, i) => (
+      <figure class={`csTile ${i === 0 ? "isFeatured" : ""}`} key={img.src}>
+        <img src={img.src} alt={img.alt ?? ""} loading="lazy" decoding="async" />
+      </figure>
+    ))}
+  </div>
 
-<p class="csCaption csCaption--center">
-
-</p>
+  <p class="csCaption csCaption--center">...</p>
 </section>
 
 {/* FINAL WIDE FRAME */}
