@@ -11,12 +11,11 @@ heroImage: "/demos/eclipse/vid.mov",
 }             
 
 const gridImages = [
-{ src: "/demos/eclipse/4.png", alt: "Profile selection" },
-{ src: "/demos/eclipse/5.png", alt: "Profile selection" },
-{ src: "/demos/eclipse/6.png", alt: "Profile selection" },
-{ src: "/demos/eclipse/7.png", alt: "Profile selection" },
-{ src: "/demos/eclipse/8.png", alt: "Profile selection" },
 { src: "/demos/eclipse/9.png", alt: "Profile selection" },
+
+{ src: "/demos/eclipse/4.png", alt: "Profile selection" },
+{ src: "/demos/eclipse/8.png", alt: "Profile selection" },
+{ src: "/demos/eclipse/7.png", alt: "Profile selection" },
 
 ]   ;                                                                                ;
 ---
@@ -66,19 +65,17 @@ Search or select any city to instantly center the map and generate a localized f
 
 {/* 2x3 GRID + CENTER CAPTION (NYT-like moment) */}
 <section class="csGridBlock">
-<div class="csGrid">
-{gridImages.map((img) => (
-<figure class="csTile">
-<img src={img.src} alt={img.alt} loading="lazy" decoding="async" />
-</figure>
-))}
-</div>
+  <div class="csGrid csGrid--featured">
+    {gridImages.map((img, i) => (
+      <figure class={`csTile ${i === 0 ? "isFeatured" : ""}`} key={img.src}>
+        <img src={img.src} alt={img.alt ?? ""} loading="lazy" decoding="async" />
+      </figure>
+    ))}
+  </div>
 
-<p class="csCaption csCaption--center">
-The same system dynamically adapts for any location, from partial coverage on the coasts to near-totality along the central path.
-
-</p>
+  <p class="csCaption csCaption--center">...</p>
 </section>
+
 
 {/* FINAL WIDE FRAME */}
 <section class="csCenter">

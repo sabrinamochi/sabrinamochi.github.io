@@ -7,7 +7,7 @@ title: "Tax bill calculator",
 subtitle: "A calculator powered by precomputed model outputs.",
 publication: "WaPo",
 built: ["Interactive tools", "Graphics & charts"],
-stack: ["Python", "JavaScript", "React", "D3"],
+stack: ["Python", "JS", "React", "D3"],
 demo: "/demos/tcja/1.png",
 caseStudyHref: "/work/tcja",
 originalHref: "https://www.washingtonpost.com/business/interactive/2025/trump-big-beautiful-bill-your-taxes-cuts/",
@@ -17,7 +17,7 @@ title: "Debt game",
 subtitle: "Swipe through policy cards, weigh tradeoffs, and watch the fiscal math update in real time.",
 publication: "WaPo",
 built: ["Maps", "Interactive tools"],
-stack: ["JavaScript", "React", "D3"],
+stack: ["JS", "React", "D3"],
 demo: "/demos/debt/vid.mov",
 caseStudyHref: "/work/debt",
 },
@@ -26,7 +26,7 @@ title: "Eclipse calculator",
 subtitle: "An interactive eclipse calculator that personalizes the sky.",
 publication: "WaPo",
 built: ["Graphics & charts", "Interactive tools"],
-stack: ["JavaScript", "D3", "React"],
+stack: ["JS", "D3", "React"],
 demo: "/demos/eclipse/vid.mov",
 caseStudyHref: "/work/eclipse",
 },
@@ -35,7 +35,7 @@ title: "AI beauty",
 subtitle: "A visual investigation into how AI models imagine beauty.",
 publication: "WaPo",
 built: ["Graphics & charts", "Interactive tools"],
-stack: ["JavaScript", "React", "DALL-E", "Stable diffusion"],
+stack: ["JS", "React", "DALL-E", "Stable diffusion"],
 demo: "/demos/ai-attractive/2.mov",
 caseStudyHref: "/work/ai-attractive",
 },
@@ -44,7 +44,7 @@ title: "Hurricane names",
 subtitle: "Not every name is storm-ready. Type one in and see whether it could earn a spot on the hurricane list.",
 publication: "WaPo",
 built: ["Graphics & charts", "Interactive tools"],
-stack: ["JavaScript", "React"],
+stack: ["JS", "React"],
 demo: "/demos/hurricane-names/1.mov",
 caseStudyHref: "/work/hurricane-names",
 },
@@ -53,7 +53,7 @@ title: "L.A. ballot map",
 subtitle: "Type your address to quickly find nearby ballot drop boxes and voting centers.",
 publication: "L.A. Times",
 built: ["Interactive tools"],
-stack: ["JavaScript", "Mapbox"],
+stack: ["JS", "Mapbox"],
 demo: "/demos/lat-ballot/3.mov",
 caseStudyHref: "/work/lat-ballot",
 },
@@ -62,7 +62,7 @@ title: "L.A. mayor’s race",
 subtitle: "An interactive map that lets Angelenos see how their neighborhood and similar communities voted in the mayor’s race.",
 publication: "L.A. Times",
 built: ["Interactive tools"],
-stack: ["JavaScript", "Mapbox"],
+stack: ["JS", "Mapbox"],
 demo: "/demos/lat-mayor/1.mov",
 caseStudyHref: "/work/lat-mayor",
 },
@@ -143,51 +143,6 @@ I design and build tools that help readers understand complex topics.
 </div>
 </footer>
 </main>
-<script is:inline>
-// Prevent double-initialization (very common cause of memory growth)
-if (!window.__pubCursorInit) {
-window.__pubCursorInit = true                                           ;
 
-const cursor = document.getElementById("pubCursor");
-if (!cursor) console.warn("pubCursor element not found");
-
-let x = 0, y = 0 ;
-let raf = 0      ;
-
-const onMove = (e) => {
-x = e.clientX                                             ;
-y = e.clientY                                             ;
-if (!raf) {
-raf = requestAnimationFrame(() => {
-raf = 0                                                   ;
-// translate is cheaper than left/top
-cursor.style.transform = `translate3d(${x}px, ${y}px, 0)` ;
-})                                                        ;
-}
-}                                                         ;
-
-const onEnter = (el) => {
-cursor.textContent = el.dataset.publication || "";
-cursor.classList.add("is-visible");
-}                                                  ;
-
-const onLeave = () => {
-cursor.classList.remove("is-visible");
-}                                      ;
-
-document.addEventListener("pointermove", onMove, { passive: true }) ;
-
-// Event delegation = fewer listeners than adding to every element
-document.addEventListener("pointerover", (e) => {
-const el = e.target.closest("[data-publication]");
-if (el) onEnter(el)                                                ;
-})                                                                 ;
-
-document.addEventListener("pointerout", (e) => {
-const el = e.target.closest("[data-publication]");
-if (el) onLeave()                                  ;
-})                                                 ;
-}
-</script>
 
 </BaseLayout>
