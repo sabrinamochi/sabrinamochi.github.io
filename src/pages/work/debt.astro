@@ -1,0 +1,74 @@
+---
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+
+const page = {
+title: "Debt game",
+intro: [
+"A swipeable budget game where readers choose policies and immediately see how their decisions affect the national debt."
+],
+links: [{ label: "Live project", href: "https://www.washingtonpost.com/business/interactive/2023/national-debt-cut-game/" }],
+heroImage: "/demos/debt/vid2.mov",
+}
+
+const gridImages = [
+{ src: "/demos/tcja/6.png", alt: "Profile selection" },
+{ src: "/demos/tcja/7.png", alt: "Profile selection" },
+{ src: "/demos/tcja/8.png", alt: "Profile selection" },
+{ src: "/demos/tcja/9.png", alt: "Profile selection" },
+
+]   ;                                                                                     ;
+---
+
+<CaseStudyLayout title={`${page.title} — Szu Yu Chen`}>
+{/* HERO */}
+<header class="csHero">
+<div class="csHero__text">
+<h1 class="csHero__title">{page.title}</h1>
+
+{page.intro.map((p) => <p class="csHero__p">{p}</p>)}
+
+<div class="csHero__links">
+{page.links.map((l) => (
+<a class="csLink" href={l.href} target="_blank" rel="noreferrer">
+{l.label}
+</a>
+))}
+</div>
+</div>
+
+<figure class="csHero__media">
+<img src={page.heroImage} alt="" loading="lazy" decoding="async" />
+</figure>
+</header>
+
+{/* BIG IMAGE + SIDE CAPTION */}
+<section class="csBlock">
+<figure class="csFrame">
+<img src="/demos/debt/vid3.mov" alt="" loading="lazy" decoding="async" />
+</figure>
+<aside class="csAside">
+The reverse side provides reporting context — benefits, costs and tradeoffs — so choices are informed rather than abstract.
+</aside>
+</section>
+
+{/* CENTERED IMAGE + CAPTION UNDER */}
+<section class="csCenter">
+<figure class="csFrame csFrame--wide">
+<img src="/demos/debt/2.png" alt="" loading="lazy" decoding="async" />
+</figure>
+<p class="csCaption">
+A category view of proposals across taxes and spending. Bubble size reflects fiscal impact, helping readers compare the scale of each decision at a glance.
+</p>
+</section>
+
+{/* FINAL WIDE FRAME */}
+<section class="csCenter">
+<figure class="csFrame csFrame--letterbox">
+<img src="/demos/debt/3.png" alt="" loading="lazy" decoding="async" />
+</figure>
+
+<p class="csCaption csCaption--center">
+A clear end-state summary shows how much debt the player added or cut.
+</p>
+</section>
+</CaseStudyLayout>

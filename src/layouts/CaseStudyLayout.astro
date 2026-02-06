@@ -1,0 +1,19 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+const { title, navName = "Szu Yu Chen" } = Astro.props;
+---
+
+<BaseLayout title={title}>
+  <nav slot="navigator" class="csNav">
+    <a class="csNav__brand" href="/">{navName}</a>
+    <div class="csNav__links">
+      <a href="/#featured">work</a>
+      <a href="https://www.linkedin.com/in/szu-yu-chen-435760159/">info</a>
+    </div>
+  </nav>
+
+  <main slot="main" class="cs">
+    <slot />
+  </main>
+</BaseLayout>

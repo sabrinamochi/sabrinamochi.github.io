@@ -3,30 +3,30 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 const featured = [
 {
-title: "Tax Bill Calculator",
-subtitle: "A constraint-driven calculator powered by precomputed model outputs (no false precision).",
+title: "Tax bill calculator",
+subtitle: "A constraint-driven calculator powered by precomputed model outputs.",
 built: ["Interactive tools", "Graphics & charts"],
 stack: ["Python", "JavaScript", "React", "D3"],
 demo: "/demos/tcja/1.png",
-caseStudyHref: "/work/tax-bill-calculator",
-originalHref: "",
+caseStudyHref: "/work/tcja",
+originalHref: "https://www.washingtonpost.com/business/interactive/2025/trump-big-beautiful-bill-your-taxes-cuts/",
 },
 {
-title: "Hurricane Tracker",
+title: "Debt game",
 subtitle: "A live map + explainer that helps readers understand risk, timing, and uncertainty.",
 built: ["Maps", "Interactive tools"],
-stack: ["JavaScript", "React", "D3", "Python", "QGIS"],
-demo: "/demos/tcja/1.png",
-caseStudyHref: "/work/hurricane-tracker",
+stack: ["JavaScript", "React", "D3"],
+demo: "/demos/debt/vid.mov",
+caseStudyHref: "/work/debt",
 originalHref: "",
 },
 {
-title: "AI Writing Style Explorer",
+title: "Eclipse calculator",
 subtitle: "Interactive explainer that visualizes patterns that signal AI-written text.",
 built: ["Graphics & charts", "Interactive tools"],
 stack: ["JavaScript", "D3", "React"],
-demo: "/demos/tcja/1.png",
-caseStudyHref: "/work/ai-style-explorer",
+demo: "/demos/eclipse/vid.mov",
+caseStudyHref: "/work/eclipse",
 originalHref: "",
 },
 ]                                                                                                      ;
@@ -37,27 +37,22 @@ originalHref: "",
 <nav slot="navigator" class="topNav">
 <div class="topNav__inner">
 <a class="topNav__brand" href="/">Szu Yu Chen</a>
-<div class="topNav__links">
-<a href="#featured">Work</a>
-<a href="/about">About</a>
-<a href="/resume.pdf">Resume</a>
-</div>
+<div class="csNav__links">
+      <a href="/#featured">work</a>
+      <a href="https://www.linkedin.com/in/szu-yu-chen-435760159/">info</a>
+    </div>
 </div>
 </nav>
 
 <header slot="header" class="hero">
 <div class="hero__inner">
 <div class="hero__copy">
-<h1>Hi, I build interactive explainers and data tools.</h1>
+<h1>I build interactive explainers and data tools.</h1>
 <p class="hero__lede">
-I design + code front-end systems that help readers understand complex topics — taxes, elections, climate, AI.
+I design and build tools that help readers understand complex topics.
 </p>
 
-<div class="ctaRow">
-<a class="btn btn--primary" href="#featured">View featured work</a>
-<a class="btn" href="/resume.pdf">Resume</a>
-<a class="btn" href="https://github.com/yourusername" target="_blank" rel="noreferrer">GitHub</a>
-</div>
+
 </div>
 
 </div>
@@ -66,66 +61,39 @@ I design + code front-end systems that help readers understand complex topics �
 <main slot="main">
 <section id="featured" class="section">
 <div class="section__head">
-<h2>Featured projects</h2>
-<p>Case studies with demos, decisions, and implementation details (paywall-proof).</p>
+<h2>Selected work</h2>
 </div>
 
-<div class="featuredList">
-{featured.map((p) => (
-<article class="featured">
-<div class="featured__media">
-<image
-class="featured__video"
-src={p.demo}
-muted
-autoplay
-loop
-playsinline
-preload="metadata"
-/>
+<div class="projectGrid">
+  {featured.map((p) => (
+    <a class="projectTile" href={p.caseStudyHref} aria-label={`Open case study: ${p.title}`}>
+      <div class="projectTile__media" aria-hidden="true">
+        <img class="projectTile__img" src={p.demo} alt="" loading="lazy" decoding="async" />
+      </div>
+
+      <div class="projectTile__overlay">
+        <h3 class="projectTile__title">{p.title}</h3>
+        <p class="projectTile__subtitle">{p.subtitle}</p>
+
+        <div class="projectTile__meta">
+
+
+          <div class="projectTile__chips" aria-label="Tech stack">
+            {p.stack.slice(0, 4).map((x) => (
+              <span class="chip chip--tile">{x}</span>
+            ))}
+          </div>
+        </div>
+
+        <div class="projectTile__cta" aria-hidden="true">
+          <span>Case study</span>
+          <span class="projectTile__arrow">→</span>
+        </div>
+      </div>
+    </a>
+  ))}
 </div>
 
-<div class="featured__body">
-
-<h3 class="featured__title">{p.title}</h3>
-<p class="featured__subtitle">{p.subtitle}</p>
-
-<dl class="spec">
-  <div class="spec__row">
-    <dt>What I built</dt>
-    <dd class="spec__list">
-      {p.built.map((x, i) => (
-        <>
-          <span class="spec__item">{x}</span>
-          {i < p.built.length - 1 ? <span class="spec__sep">/</span> : null}
-        </>
-      ))}
-    </dd>
-  </div>
-
-  <div class="spec__row">
-    <dt>Stack</dt>
-    <dd class="spec__chips">
-      {p.stack.map((x) => (
-        <span class="chip chip--stack">{x}</span>
-      ))}
-    </dd>
-  </div>
-</dl>
-
-
-<div class="linkRow">
-<a class="link link--primary" href={p.caseStudyHref}>Case study →</a>
-{p.originalHref ? (
-<a class="link" href={p.originalHref} target="_blank" rel="noreferrer">
-Original ↗ <span class="muted">(paywalled)</span>
-</a>
-) : null}
-</div>
-</div>
-</article>
-))}
-</div>
 </section>
 
 <section class="section section--soft">
@@ -163,11 +131,10 @@ Front-end experiences and data tools designed for clarity and trust — built to
 <div class="footer__inner">
 <div class="footer__left">© {new Date().getFullYear()} Szu Yu Chen</div>
 <div class="footer__right">
-<a href="mailto:you@email.com">Email</a>
+<a href="mailto:szuyuchen0101@gmail.com">Email</a>
 <span class="dot">•</span>
-<a href="https://github.com/yourusername" target="_blank" rel="noreferrer">GitHub</a>
-<span class="dot">•</span>
-<a href="/resume.pdf">Resume</a>
+
+<a href="https://www.linkedin.com/in/szu-yu-chen-435760159/">Resume</a>
 </div>
 </div>
 </footer>
