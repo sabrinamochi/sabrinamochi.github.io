@@ -1,124 +1,364 @@
 ---
 // index.astro (or put this in a component and import it)
 
+const stickersold = [
+// emoji, top, left, rotate(deg), size(px)
+["🐕", "18%", "72%", 12, 64],
+["🎤", "22%", "18%", -10, 56],
+["📍", "62%", "78%", 8, 52],
+["⚾", "14%", "88%", 10, 60],
+["🗓️", "72%", "22%", -14, 58],
+["💬", "40%", "10%", -6, 54],
+["🔗", "30%", "30%", 18, 52],
+["🧠", "78%", "66%", -8, 56],
+["📊", "58%", "12%", 9, 58],
+["🗺️", "36%", "86%", -12, 56],
+["✨", "84%", "40%", 14, 54],
+]                                          ;
+
 const stickers = [
-  // emoji, top, left, rotate(deg), size(px)
-  ["🐕",  "18%", "72%",  12, 64],
-  ["🎤",  "22%", "18%", -10, 56],
-  ["📍",  "62%", "78%",   8, 52],
-  ["⚾",  "14%", "88%",  10, 60],
-  ["🗓️",  "72%", "22%", -14, 58],
-  ["💬",  "40%", "10%",  -6, 54],
-  ["🔗",  "30%", "30%",  18, 52],
-  ["🧠",  "78%", "66%",  -8, 56],
-  ["📊",  "58%", "12%",   9, 58],
-  ["🗺️",  "36%", "86%", -12, 56],
-  ["✨",  "84%", "40%",  14, 54],
-];
+{
+emoji: "🐕",
+top: "18%",
+left: "72%",
+rot: 12,
+size: 64,
+kind: "image",
+title: "Taffy 🐾",
+src: "/images/taffy.jpg",
+alt: "My baby",
+caption: "The best coworker.",
+},
+{
+emoji: "🎤",
+top: "22%",
+left: "18%",
+rot: -10,
+size: 56,
+kind: "youtube",
+title: "What I've been listening to",
+url: "https://www.youtube.com/watch?v=_hgu16lRfbQ&list=PL0WY3-b60M-SPBwoSbF0mkkgu5PK_VvxU&index=12",
+},
+{
+emoji: "🏺",
+top: "62%",
+left: "78%",
+rot: 8,
+size: 52,
+kind: "image",
+title: "Clay days",
+caption: "My favorite way to slow down and make something with my hands.",
+src: "/images/pottery.jpg",
+alt: "Clay days",
+},
+{
+emoji: "✨",
+top: "84%",
+left: "40%",
+rot: 14,
+size: 54,
+kind: "burst",
+title: "Sparkles!",
+},
+{
+emoji: "🧋",
+top: "70%",
+left: "14%",
+rot: -10,
+size: 56,
+kind: "text",
+title: "From Taiwan🧋",
+text: "Born and raised. Still fueled by bubble tea.",
+}
+
+]   ;
 ---
 
-
 <section class="stickerWall" aria-label="Contact section">
-  <div class="stickerWall__inner">
-    <!-- Clickable stickers -->
-    {stickers.map(([emoji, top, left, rot, size, msg, href], i) => (
-      <button
-        class="sticker"
-        type="button"
-        style={`top:${top}; left:${left}; transform: rotate(${rot}deg); font-size:${size}px;`}
-        data-msg={msg}
-        data-href={href}
-        aria-label={`Sticker ${i + 1}: ${msg}`}
-      >
-        <span aria-hidden="true">{emoji}</span>
-      </button>
-    ))}
+<div class="stickerWall__inner">
 
-    <!-- Center card stack -->
-    <div class="cardStack">
-      <div class="card">
-        <div class="card__meta">8 / 9</div>
-        <h2 class="card__title">Want to work together?</h2>
-        <p class="card__sub">Freelance, full-time, or a quick intro call.</p>
+<div class="burstLayer" id="burstLayer" aria-hidden="true"></div>
 
-        <div class="card__actions">
-          <a class="btn" href="mailto:szuyuchen0101@gmail.com">Email me ↗</a>
-        </div>
-      </div>
-    </div>
+<!-- Clickable stickers -->
+{stickers.map((s, i) => (
+<button
+class="sticker"
+type="button"
+style={`top:${s.top}                                  ; left:${s.left}; transform: rotate(${s.rot}deg); font-size:${s.size}px;`}
+data-sticker={JSON.stringify(s)}
+aria-label={`Sticker ${i + 1}: ${s.title ?? "Open"}`}
+>
+<span aria-hidden="true">{s.emoji}</span>
+</button>
+))}
 
-    <!-- Bubble (positioned dynamically) -->
-    <div class="stickerTip" id="stickerTip" role="status" aria-live="polite" hidden>
-      <div class="stickerTip__bubble" id="stickerTipBubble"></div>
-    </div>
-  </div>
+<!-- Center card stack -->
+<div class="cardStack">
+<div class="card">
+<div class="card__meta"></div>
+<h2 class="card__title">Here's more about me</h2>
+<p class="card__sub">Click the emojis to find out!</p>
 
-  <script is:inline>
-    const tip = document.getElementById("stickerTip");
-    const bubble = document.getElementById("stickerTipBubble");
-    const stickers = document.querySelectorAll(".stickerWall .sticker");
+<div class="card__actions">
+<a class="btn" href="mailto:szuyuchen0101@gmail.com">Email me ↗</a>
+</div>
+</div>
+</div>
 
-    function showTip(target, text) {
-      bubble.textContent = text;
+<!-- Bubble (positioned dynamically) -->
+<div class="stickerTip" id="stickerTip" role="status" aria-live="polite" hidden>
+<div class="stickerTip__bubble" id="stickerTipBubble"></div>
+</div>
+</div>
 
-      // Position bubble near the clicked sticker (relative to the inner container)
-      const inner = target.closest(".stickerWall__inner");
-      const innerRect = inner.getBoundingClientRect();
-      const r = target.getBoundingClientRect();
+<div class="stickerModal" id="stickerModal" hidden aria-hidden="true">
+<div class="stickerModal__backdrop" data-close></div>
 
-      const x = r.left - innerRect.left + r.width / 2;
-      const y = r.top - innerRect.top - 14; // above sticker
+<div class="stickerModal__card" role="dialog" aria-modal="true" aria-label="Sticker detail">
+<button class="stickerModal__close" type="button" data-close aria-label="Close">×</button>
 
-      tip.style.left = `${x}px`;
-      tip.style.top = `${y}px`;
-      tip.hidden = false;
+<div class="stickerModal__body">
+<h3 class="stickerModal__title" id="stickerModalTitle"></h3>
 
-      // small pop animation reset
-      bubble.animate(
-        [{ transform: "translate(-50%, -100%) scale(0.98)", opacity: 0.0 },
-         { transform: "translate(-50%, -100%) scale(1)", opacity: 1 }],
-        { duration: 140, easing: "ease-out" }
-      );
-    }
+<div id="stickerModalContent"></div>
+</div>
+</div>
 
-    function hideTip() {
-      tip.hidden = true;
-    }
+</div>
 
-    stickers.forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        const msg = btn.dataset.msg || "";
-        const href = btn.dataset.href || "";
-        showTip(btn, msg);
+<script is:inline>
+const modal = document.getElementById("stickerModal");
+const modalTitle = document.getElementById("stickerModalTitle");
+const modalContent = document.getElementById("stickerModalContent");
+const stickerButtons = document.querySelectorAll(".stickerWall .sticker");
 
-        // Optional: click again to follow link
-        // (You can remove this if you only want the bubble)
-        if (href) {
-          // If you want immediate navigation instead, replace with: window.location.href = href;
-          // Here: second click navigates.
-          btn.dataset.armed = btn.dataset.armed === "1" ? "0" : "1";
-          if (btn.dataset.armed === "1") {
-            bubble.textContent = `${msg} (click again to open)`;
-          } else {
-            window.open(href, href.startsWith("/") ? "_self" : "_blank", "noopener,noreferrer");
-          }
-        }
-      });
-    });
+const state = { lastFocus: null } ;
 
-    // Click outside closes
-    document.addEventListener("click", (e) => {
-      const inside = e.target.closest(".stickerWall__inner");
-      const isSticker = e.target.closest(".sticker");
-      if (inside && !isSticker) hideTip();
-    });
+const burstLayer = document.getElementById("burstLayer");
 
-    // Esc closes
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") hideTip();
-    });
-  </script>
+function starBurstFrom(el, opts = {}) {
+const count = opts.count ?? 26                              ;
+const ttl = opts.ttl ?? 900                                 ; // ms
+const glyphs = opts.glyphs ?? ["✨", "✦", "✧", "⭐"];
+const inner = el.closest(".stickerWall__inner");
+if (!inner || !burstLayer) return                           ;
 
-  <style>
-    </style>
+const innerRect = inner.getBoundingClientRect() ;
+const r = el.getBoundingClientRect()            ;
+
+// Center of clicked sticker relative to inner container
+const x = r.left - innerRect.left + r.width / 2          ;
+const y = r.top - innerRect.top + r.height / 2           ;
+
+for (let i = 0                                              ; i < count; i++) {
+const s = document.createElement("span");
+s.className = "burstStar";
+s.textContent = glyphs[(Math.random() * glyphs.length) | 0] ;
+
+// start position
+s.style.left = `${x}px` ;
+s.style.top = `${y}px`  ;
+
+// random trajectory
+const angle = Math.random() * Math.PI * 2 ;
+const dist = 60 + Math.random() * 160     ;
+const dx = Math.cos(angle) * dist         ;
+const dy = Math.sin(angle) * dist         ;
+
+// random sizes / rotation / delay
+const size = 14 + Math.random() * 26              ;
+const rot = (Math.random() * 180 - 90).toFixed(1) ;
+const delay = Math.random() * 80                  ;
+
+s.style.fontSize = `${size}px` ;
+
+burstLayer.appendChild(s) ;
+
+const anim = s.animate(
+[
+{ transform: `translate(-50%, -50%) scale(0.8) rotate(0deg)`, opacity: 0 },
+{ transform: `translate(-50%, -50%) scale(1) rotate(${rot}deg)`, opacity: 1, offset: 0.15 },
+{ transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) scale(0.9) rotate(${rot}deg)`, opacity: 0 }
+],
+{ duration: ttl, delay, easing: "cubic-bezier(.2,.8,.2,1)", fill: "forwards" }
+)                                                                                                               ;
+
+if (!anim) {
+// super simple fallback: at least show something
+s.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px))` ;
+s.style.opacity = "0";
+}
+;
+
+// cleanup
+setTimeout(() => s.remove(), ttl + delay + 50) ;
+}
+}
+
+function openModal(fromEl, payload) {
+
+function toYouTubeEmbed(url) {
+try {
+const u = new URL(url)                                        ;
+const id =
+u.searchParams.get("v") ||
+(u.hostname.includes("youtu.be") ? u.pathname.slice(1) : "");
+
+if (!id) return null ;
+
+const list = u.searchParams.get("list");
+const index = u.searchParams.get("index");
+
+// Keep playlist context if present
+const params = new URLSearchParams() ;
+params.set("rel", "0");
+params.set("modestbranding", "1");
+params.set("playsinline", "1");
+
+if (list) params.set("list", list)    ;
+if (index) params.set("index", index) ;
+
+return `https://www.youtube-nocookie.com/embed/${id}?${params.toString()}` ;
+} catch {
+return null                                                                ;
+}
+}
+
+state.lastFocus = fromEl ;
+
+modalTitle.textContent = payload.title || "";
+modalContent.innerHTML = "";
+
+// Render by kind
+if (payload.kind === "youtube") {
+const embed = toYouTubeEmbed(payload.url || payload.text || "");
+if (!embed) {
+const a = document.createElement("a");
+a.className = "btn";
+a.href = payload.url || payload.text                             ;
+a.target = "_blank";
+a.rel = "noopener noreferrer";
+a.textContent = "Open on YouTube ↗";
+modalContent.appendChild(a)                                      ;
+} else {
+const wrap = document.createElement("div");
+wrap.className = "stickerModal__embed";
+
+const iframe = document.createElement("iframe");
+iframe.src = embed                                                                                     ;
+iframe.title = payload.title || "YouTube video";
+iframe.allow =
+"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+iframe.allowFullscreen = true                                                                          ;
+iframe.loading = "lazy";
+iframe.referrerPolicy = "strict-origin-when-cross-origin";
+
+wrap.appendChild(iframe)       ;
+modalContent.appendChild(wrap) ;
+}
+}
+
+if (payload.kind === "text") {
+const p = document.createElement("p");
+p.className = "stickerModal__text";
+p.textContent = payload.text || "";
+modalContent.appendChild(p)            ;
+}
+
+if (payload.kind === "image") {
+const figure = document.createElement("figure");
+figure.className = "polaroid";
+
+const img = document.createElement("img");
+img.className = "polaroid__img";
+img.src = payload.src                      ;
+img.alt = payload.alt || "";
+img.loading = "eager";
+img.decoding = "async";
+
+figure.appendChild(img) ;
+
+if (payload.caption) {
+const cap = document.createElement("figcaption");
+cap.className = "polaroid__cap";
+cap.textContent = payload.caption                 ;
+figure.appendChild(cap)                           ;
+}
+
+modalContent.appendChild(figure) ;
+}
+
+if (payload.kind === "video") {
+const video = document.createElement("video");
+video.className = "stickerModal__video";
+video.src = payload.src                        ;
+video.poster = payload.poster || "";
+video.autoplay = true                          ;
+video.loop = true                              ;
+video.muted = true                             ;
+video.playsInline = true                       ;
+video.controls = true                          ; // optional; remove if you want it “clean”
+
+modalContent.appendChild(video) ;
+
+if (payload.caption) {
+const cap = document.createElement("div");
+cap.className = "stickerModal__caption";
+cap.textContent = payload.caption          ;
+modalContent.appendChild(cap)              ;
+}
+}
+
+if (payload.kind === "link") {
+const a = document.createElement("a");
+a.className = "btn";
+a.href = payload.href                       ;
+a.target = "_blank";
+a.rel = "noopener noreferrer";
+a.textContent = payload.text || "Open ↗";
+modalContent.appendChild(a)                 ;
+}
+
+modal.hidden = false                                  ;
+modal.setAttribute("aria-hidden", "false");
+document.body.style.overflow = "hidden";
+modal.querySelector(".stickerModal__close")?.focus();
+}
+
+function closeModal() {
+modal.hidden = true                        ;
+modal.setAttribute("aria-hidden", "true");
+document.body.style.overflow = "";
+state.lastFocus?.focus?.()                 ;
+}
+
+stickerButtons.forEach((btn) => {
+btn.addEventListener("click", () => {
+const raw = btn.getAttribute("data-sticker");
+if (!raw) return                              ;
+const payload = JSON.parse(raw)               ;
+
+// If you still want tooltip for some stickers, you can branch here:
+// if (payload.kind === "text" && payload.text?.length < 40) { showTip(btn, payload.text) ; return; }
+if (payload.kind === "burst") {
+console.log("burst clicked", { burstLayer, btn })                                         ;
+starBurstFrom(btn, { count: 34, ttl: 950 })                                               ;
+return                                                                                    ;
+}
+
+openModal(btn, payload) ;
+})                      ;
+})                      ;
+
+modal?.addEventListener("click", (e) => {
+if (e.target?.matches?.("[data-close]")) closeModal() ;
+})                                                    ;
+
+document.addEventListener("keydown", (e) => {
+if (e.key === "Escape" && !modal.hidden) closeModal() ;
+})                                                    ;
+</script>
+
+<style>
+</style>
 </section>

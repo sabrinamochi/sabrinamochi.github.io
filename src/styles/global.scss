@@ -93,6 +93,7 @@ h3 {
   text-decoration: none;
   letter-spacing: -0.01em;
   font-family: var(--font-mono);
+  // color: #64b1c0
 }
 
 .topNav__links {
@@ -597,7 +598,8 @@ h3 {
   margin: 0;
 }
 
-.csHero__media img, .csHero__media video {
+.csHero__media img,
+.csHero__media video {
   width: 100%;
   height: auto;
   border-radius: 0;
@@ -640,7 +642,8 @@ h3 {
   margin: 0;
 }
 
-.csFrame img, .csFrame video {
+.csFrame img,
+.csFrame video {
   width: 100%;
   height: auto;
 }
@@ -763,24 +766,237 @@ h3 {
 
 
 /* =========================
+ career table
+========================= */
+
+.career {
+  max-width: var(--max);
+  margin: 0 auto 5rem;
+  padding: 0 1rem;
+}
+
+.career__title {
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.25rem 0;
+}
+
+/* Make the table feel like a “panel” */
+.career__table {
+  border-top: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  // border-radius: 18px;
+  overflow: hidden;
+}
+
+/* Softer row separators + hover interaction */
+.career__row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.2fr 2.2fr 1.5fr 0.8fr;
+  gap: 1rem;
+  padding: 1.2rem 1rem;
+  border-bottom: 1px solid color-mix(in oklab, currentColor 35%, transparent);
+  align-items: baseline;
+  text-decoration: none;
+
+  transition: transform 140ms ease, background 140ms ease;
+  cursor: pointer;
+}
+
+.career__row:last-child {
+  border-bottom: 0;
+}
+
+.career__row:hover {
+  transform: translateY(-1px);
+  background:
+    linear-gradient(
+      90deg,
+      color-mix(in oklab, currentColor 12%, transparent),
+      transparent 55%
+    );
+}
+
+/* Little left accent “tab” on hover */
+.career__row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 4px;
+  border-radius: 999px;
+  background: transparent;
+  transition: background 140ms ease;
+}
+.career__row:hover::before {
+  background: currentColor;
+  opacity: 0.85;
+}
+
+/* Typography */
+.career__cell {
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+
+.career__cell--dates,
+.career__cell--loc {
+  text-align: right;
+  font-family: "Monument Grotesk Semi-Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.02em;
+  font-size: 0.98rem;
+  opacity: 0.9;
+}
+
+/* Org dot = “timeline” feel */
+.career__org {
+  position: relative;
+  padding-left: 1.1rem;
+  display: inline-block;
+}
+
+.career__org::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.35;
+  transform: translateY(-50%);
+  transition: opacity 140ms ease, transform 140ms ease;
+}
+
+.career__row:hover .career__org::before {
+  opacity: 0.85;
+  transform: translateY(-50%) scale(1.05);
+}
+
+/* Links feel more “designed” */
+.career__link {
+  color: inherit;
+  text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 2px no-repeat;
+  transition: background-size 160ms ease;
+}
+.career__row:hover .career__link {
+  background-size: 100% 2px;
+}
+
+/* Accessibility: keep your head row hidden */
+.career__row--head {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Mobile */
+@media (max-width: 720px) {
+  .career__row {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "org  role"
+      "dates loc";
+    gap: 0.35rem 0.9rem;
+    padding: 0.95rem 0.9rem;
+    align-items: start;
+  }
+
+  .career__cell {
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+
+  .career__cell--org {
+    grid-area: org;
+    font-weight: 650;
+    min-width: 0; /* allows text to wrap nicely */
+  }
+
+  .career__cell--role {
+    grid-area: role;
+    text-align: right;
+    min-width: 0;
+    opacity: 0.95;
+  }
+
+  .career__cell--dates {
+    grid-area: dates;
+    text-align: left;
+    font-size: 0.95rem;
+    opacity: 0.75;
+    white-space: nowrap;
+  }
+
+  .career__cell--loc {
+    grid-area: loc;
+    text-align: right;
+    font-size: 0.95rem;
+    opacity: 0.75;
+    white-space: nowrap;
+  }
+
+  /* Make long titles wrap cleanly instead of breaking layout */
+  .career__cell--role {
+    overflow-wrap: anywhere;
+  }
+
+  /* Dot: smaller + aligned to first line */
+  .career__org {
+    padding-left: 0rem;
+  }
+
+
+  /* Mobile: kill hover transform jitter */
+  .career__row:hover {
+    transform: none;
+  }
+
+  /* Keep separators lighter */
+  .career__table {
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+  }
+  .career__row {
+    border-bottom: 1px solid color-mix(in oklab, currentColor 25%, transparent);
+    background: none;
+  }
+
+  .career__row::before, .career__org::before {
+    width: 0;
+    display: none;
+  }
+}
+
+
+
+
+/* =========================
    Sticker Wall
 ========================= */
 .stickerWall {
-  padding: 64px 0;
-  background: #555;
+  margin: 64px 0;
+  background: linear-gradient(to bottom, #fff, #64b1c0, #fff);
   color: black;
 }
 
 .stickerWall__inner {
   position: relative;
-  max-width: 1100px;
+  max-width: 800px;
   margin: 0 auto;
   min-height: 560px;
-  border-radius: 28px;
+  border-radius: 0px;
   overflow: hidden;
   background:
-    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
   background-size: 36px 36px;
 }
 
@@ -795,8 +1011,8 @@ h3 {
   line-height: 1;
   filter: drop-shadow(0 12px 18px rgba(255, 255, 255, 0.2));
   user-select: none;
-
-  /* remove “hand cursor” */
+  z-index: 11;
+  cursor: pointer
 
 }
 
@@ -818,13 +1034,19 @@ h3 {
 
 .card {
   pointer-events: auto;
-  width: min(640px, 45%);
+  width: min(640px, 40%);
   background: rgba(255, 255, 255, 0.78);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 24px;
-  padding: 28px;
+  padding: 24px 28px;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(10px);
+}
+
+@media (max-width: 720px) {
+  .card {
+    width: 70%;
+  }
 }
 
 .card__meta {
@@ -837,7 +1059,7 @@ h3 {
 
 .card__title {
   margin: 0 0 10px 0;
-  font-size: 28px;
+  font-size: 20px;
   letter-spacing: -0.02em;
 }
 
@@ -857,25 +1079,79 @@ h3 {
   text-decoration: none;
   font-weight: 600;
 }
+.stickerModal[hidden] { display: none; }
 
-/* Speech bubble */
-.stickerTip {
+.stickerModal { position: fixed; inset: 0; z-index: 999; }
+.stickerModal__backdrop { position: absolute; inset: 0; background: rgba(10,10,10,0.55); backdrop-filter: blur(2px); }
+
+.stickerModal__card {
   position: absolute;
-  transform: translate(-50%, -100%);
-  /* anchor at bottom center */
-  z-index: 5;
-  pointer-events: none;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -52%) rotate(-1deg);
+  width: min(400px, calc(80vw - 2rem));
 }
 
-.stickerTip__bubble {
-  max-width: 360px;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  color: black;
-  padding: 14px 16px;
+.stickerModal__close {
+  position: absolute;
+  right: 0.8rem;
+  top: 0.8rem;
+  width: 30px; height: 30px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.35);
+  background: rgba(0,0,0,0.35);
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.stickerModal__body {
+  background: white;
   border-radius: 16px;
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
-  font-size: 15px;
-  line-height: 1.25;
-  position: relative;
+  padding: 1rem;
+  box-shadow: 0 24px 70px rgba(0,0,0,0.28);
+}
+
+.stickerModal__title { margin: 0 0 0.75rem 0; font-family: var(--font-mono); }
+
+.stickerModal__text { margin: 0; line-height: 1.5; }
+
+.polaroid { margin: 0; }
+.polaroid__img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px; display: block; }
+.polaroid__cap { margin-top: 0.6rem; opacity: 0.7; }
+
+.stickerModal__video { width: 100%; border-radius: 12px; display: block; }
+.stickerModal__caption { margin-top: 0.6rem; opacity: 0.7; }
+
+.stickerModal__embed {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+.stickerModal__embed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+
+.burstLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50; /* above the stickers/card, below modal if needed */
+}
+
+.burstStar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.18));
+  user-select: none;
 }

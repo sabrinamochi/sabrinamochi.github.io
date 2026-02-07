@@ -1,5 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+import CareerTable from "../components/CareerTable.astro";
+
+const workedWith = [
+{ org: "Washington Post", role: "Graphics reporter", dates: "11/22 – 02/26", location: "LA", href: "https://www.washingtonpost.com/people/szuyu-chen/" },
+{ org: "L.A. Times", role: "Data & Graphics reporter", dates: "09/21 – 10/22", location: "LA", href: "https://www.latimes.com/people/szu-yu-chen"},
+{ org: "Bloomberg", role: "Graphics reporter - intern", dates: "06/21 – 08/21", location: "NYC", href: "https://www.bloomberg.com/graphics/2021-mackenzie-scott-donations/" },
+{ org: "Barabási Lab", role: "Data vis designer", dates: "07/20 – 04/21", location: "Boston", href: "https://barabasi.com/science/about" },
+]                                                                                                                   ;
+
 import StickerWall from "../components/stickerWall.astro";
 const featured = [
 {
@@ -102,57 +112,56 @@ I design and build tools that help readers understand complex topics.
 
 <div class="projectGrid">
 {featured.map((p) => {
-  const demo = p.demo ?? '';
-  const isPng = demo.toLowerCase().endsWith('.png');
+const demo = p.demo ?? '';
+const isPng = demo.toLowerCase().endsWith('.png');
 
-  return (
-    <a
-      data-publication={p.publication}
-      class="projectTile"
-      href={p.caseStudyHref}
-      aria-label={`Open case study: ${p.title}`}
-    >
-      <div class="projectTile__media" aria-hidden="true">
-        {isPng ? (
-          <img
-            class="projectTile__img"
-            src={p.demo}
-            alt=""
-            loading="lazy"
-            decoding="async"
-          />
-        ) : (
-          <video
-            class="projectTile__img"
-            src={p.demo}
-            autoplay
-            loop
-            muted
-            playsinline
-            preload="metadata"
-          />
-        )}
-      </div>
+return (
+<a
+data-publication={p.publication}
+class="projectTile"
+href={p.caseStudyHref}
+aria-label={`Open case study: ${p.title}`}
+>
+<div class="projectTile__media" aria-hidden="true">
+{isPng ? (
+<img
+class="projectTile__img"
+src={p.demo}
+alt=""
+loading="lazy"
+decoding="async"
+/>
+) : (
+<video
+class="projectTile__img"
+src={p.demo}
+autoplay
+loop
+muted
+playsinline
+preload="metadata"
+/>
+)}
+</div>
 
-      <div class="projectTile__overlay">
-        <h3 class="projectTile__title">{p.title}</h3>
-        <p class="projectTile__subtitle">{p.subtitle}</p>
+<div class="projectTile__overlay">
+<h3 class="projectTile__title">{p.title}</h3>
+<p class="projectTile__subtitle">{p.subtitle}</p>
 
-        <div class="projectTile__meta">
-          <div class="projectTile__chips" aria-label="Tech stack">
-            {p.stack.slice(0, 4).map((x) => (
-              <span class="chip chip--tile">{x}</span>
-            ))}
-          </div>
-        </div>
-      </div>
-    </a>
-  );
+<div class="projectTile__meta">
+<div class="projectTile__chips" aria-label="Tech stack">
+{p.stack.slice(0, 4).map((x) => (
+<span class="chip chip--tile">{x}</span>
+))}
+</div>
+</div>
+</div>
+</a>
+)                                                        ;
 })}
 
 </div>
 </div>
-
 
 </div>
 </a>
@@ -161,6 +170,9 @@ I design and build tools that help readers understand complex topics.
 
 </section>
 
+<CareerTable title="Worked with" count={workedWith.length} items={workedWith} />
+
+<StickerWall></StickerWall>
 <footer class="footer">
 <div class="footer__inner">
 <div class="footer__left">© {new Date().getFullYear()} Szu Yu Chen</div>
@@ -173,6 +185,5 @@ I design and build tools that help readers understand complex topics.
 </div>
 </footer>
 </main>
-
 
 </BaseLayout>

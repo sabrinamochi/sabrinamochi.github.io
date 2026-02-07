@@ -1,0 +1,54 @@
+---
+export type CareerRow = {
+org: string               ;
+role: string              ;
+dates: string             ;
+location: string          ;
+href?: string             ; 
+}                         ;
+
+const {
+title = "Worked with",
+count,
+items = [],
+} = Astro.props as {
+title?: string         ;
+count?: number         ;
+items: CareerRow[]     ;
+}                      ;
+---
+
+<section class="career">
+<header class="career__header section__head">
+<h2 class="career__title">
+{title}
+
+</h2>
+</header>
+
+<div class="career__table" role="table" aria-label={`${title} list`}>
+<div class="career__row career__row--head" role="row">
+<div class="career__cell career__cell--org" role="columnheader">Org</div>
+<div class="career__cell career__cell--role" role="columnheader">Role</div>
+<div class="career__cell career__cell--dates" role="columnheader">Dates</div>
+<div class="career__cell career__cell--loc" role="columnheader">Location</div>
+</div>
+
+{items.map((r) => (
+  <a
+    class="career__row career__row--link"
+    href={r.href}
+    aria-label={`${r.org}, ${r.role}`}
+  >
+    <div class="career__cell career__cell--org">
+      <span class="career__org">{r.org}</span>
+    </div>
+
+    <div class="career__cell career__cell--role">{r.role}</div>
+    <div class="career__cell career__cell--dates">{r.dates}</div>
+    <div class="career__cell career__cell--loc">{r.location}</div>
+  </a>
+))}
+
+</div>
+</section>
