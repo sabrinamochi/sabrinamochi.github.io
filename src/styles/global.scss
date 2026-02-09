@@ -165,32 +165,37 @@ h3 {
 ========================= */
 
 .hero {
-  padding: 7rem 20px 28px;
+  padding: clamp(72px, 10vw, 120px) 20px 40px;
 }
 
 .hero__inner {
   max-width: var(--max);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 22px;
+  grid-template-columns: 1fr;
+  gap: 18px;
   align-items: start;
 }
 
+/* Make headline width intentional */
 .hero__copy h1 {
-  font-size: clamp(44px, 6vw, 60px);
-  line-height: 1.15;
-  font-weight: 500;
-  letter-spacing: -0.02em;
+  max-width: 18ch;
+  /* controls line breaks */
+  font-size: clamp(45px, 6vw, 65px);
+  line-height: 1.05;
+  font-weight: 520;
+  letter-spacing: -0.03em;
 }
 
+/* Give lede more presence */
 .hero__lede {
-  font-size: 16px;
-  max-width: 52ch;
-  margin-top: 20px;
+  max-width: 60ch;
+  font-size: clamp(16px, 1.4vw, 18px);
+  margin-top: 18px;
   color: var(--muted);
-  line-height: 1.55;
+  line-height: 1.6;
 }
+
 
 /* Buttons */
 .ctaRow {
@@ -261,8 +266,12 @@ h3 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 
 
-  @media (min-width: 640px) {
+  @media (min-width: 800px) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+    @media (min-width: 640px) and (max-width: 800px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   @media (max-width: 640px) {
@@ -336,18 +345,24 @@ h3 {
       rgba(255, 255, 255, 0.3) 98%);
 }
 
-/* show overlay on hover + keyboard focus */
-.projectTile:hover .projectTile__overlay,
-.projectTile:focus-visible .projectTile__overlay {
-  opacity: 1;
-  transform: translateY(0);
+/* only enable hover reveal on real-hover devices (mouse/trackpad) */
+@media (hover: hover) and (pointer: fine) {
+
+  .projectTile:hover .projectTile__overlay,
+  .projectTile:focus-visible .projectTile__overlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
+
 
 /* Mobile: no hover, so keep titles visible */
 @media (max-width: 640px) {
   .projectTile__overlay {
     opacity: 1;
     transform: none;
+    position: relative;
   }
 }
 
@@ -511,7 +526,7 @@ h3 {
 
 .csNav__links {
   display: flex;
-  gap: 8px;
+  gap: 2rem;
 
   a {
     font-family: var(--font-mono);
@@ -811,29 +826,27 @@ h3 {
 .career__row:hover {
   transform: translateY(-1px);
   background:
-    linear-gradient(
-      90deg,
+    linear-gradient(90deg,
       color-mix(in oklab, currentColor 12%, transparent),
-      transparent 55%
-    );
+      transparent 55%);
 }
 
 /* Little left accent “tab” on hover */
-.career__row::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 10px;
-  bottom: 10px;
-  width: 4px;
-  border-radius: 999px;
-  background: transparent;
-  transition: background 140ms ease;
-}
-.career__row:hover::before {
-  background: currentColor;
-  opacity: 0.85;
-}
+// .career__row::before {
+//   content: "";
+//   position: absolute;
+//   left: 0;
+//   top: 10px;
+//   bottom: 10px;
+//   width: 4px;
+//   border-radius: 999px;
+//   background: transparent;
+//   transition: background 140ms ease;
+// }
+// .career__row:hover::before {
+//   background: currentColor;
+//   opacity: 0.85;
+// }
 
 /* Typography */
 .career__cell {
@@ -883,6 +896,7 @@ h3 {
   background: linear-gradient(currentColor, currentColor) 0 100% / 0 2px no-repeat;
   transition: background-size 160ms ease;
 }
+
 .career__row:hover .career__link {
   background-size: 100% 2px;
 }
@@ -917,7 +931,8 @@ h3 {
   .career__cell--org {
     grid-area: org;
     font-weight: 650;
-    min-width: 0; /* allows text to wrap nicely */
+    min-width: 0;
+    /* allows text to wrap nicely */
   }
 
   .career__cell--role {
@@ -964,12 +979,14 @@ h3 {
     border-top-width: 2px;
     border-bottom-width: 2px;
   }
+
   .career__row {
     border-bottom: 1px solid color-mix(in oklab, currentColor 25%, transparent);
     background: none;
   }
 
-  .career__row::before, .career__org::before {
+  .career__row::before,
+  .career__org::before {
     width: 0;
     display: none;
   }
@@ -1013,7 +1030,6 @@ h3 {
   user-select: none;
   z-index: 11;
   cursor: pointer
-
 }
 
 .sticker:focus-visible {
@@ -1079,10 +1095,23 @@ h3 {
   text-decoration: none;
   font-weight: 600;
 }
-.stickerModal[hidden] { display: none; }
 
-.stickerModal { position: fixed; inset: 0; z-index: 999; }
-.stickerModal__backdrop { position: absolute; inset: 0; background: rgba(10,10,10,0.55); backdrop-filter: blur(2px); }
+.stickerModal[hidden] {
+  display: none;
+}
+
+.stickerModal {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+}
+
+.stickerModal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.55);
+  backdrop-filter: blur(2px);
+}
 
 .stickerModal__card {
   position: absolute;
@@ -1096,10 +1125,11 @@ h3 {
   position: absolute;
   right: 0.8rem;
   top: 0.8rem;
-  width: 30px; height: 30px;
+  width: 30px;
+  height: 30px;
   border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.35);
-  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(0, 0, 0, 0.35);
   color: white;
   font-size: 18px;
   cursor: pointer;
@@ -1109,19 +1139,46 @@ h3 {
   background: white;
   border-radius: 16px;
   padding: 1rem;
-  box-shadow: 0 24px 70px rgba(0,0,0,0.28);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
 }
 
-.stickerModal__title { margin: 0 0 0.75rem 0; font-family: var(--font-mono); }
+.stickerModal__title {
+  margin: 0 0 0.75rem 0;
+  font-family: var(--font-mono);
+}
 
-.stickerModal__text { margin: 0; line-height: 1.5; }
+.stickerModal__text {
+  margin: 0;
+  line-height: 1.5;
+}
 
-.polaroid { margin: 0; }
-.polaroid__img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px; display: block; }
-.polaroid__cap { margin-top: 0.6rem; opacity: 0.7; }
+.polaroid {
+  margin: 0;
+}
 
-.stickerModal__video { width: 100%; border-radius: 12px; display: block; }
-.stickerModal__caption { margin-top: 0.6rem; opacity: 0.7; }
+.polaroid__img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.polaroid__cap {
+  margin-top: 0.6rem;
+  opacity: 0.7;
+}
+
+.stickerModal__video {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+}
+
+.stickerModal__caption {
+  margin-top: 0.6rem;
+  opacity: 0.7;
+}
 
 .stickerModal__embed {
   width: 100%;
@@ -1129,7 +1186,7 @@ h3 {
   border-radius: 14px;
   overflow: hidden;
   background: #000;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
 
 .stickerModal__embed iframe {
@@ -1144,7 +1201,8 @@ h3 {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 50; /* above the stickers/card, below modal if needed */
+  z-index: 50;
+  /* above the stickers/card, below modal if needed */
 }
 
 .burstStar {
@@ -1152,6 +1210,6 @@ h3 {
   left: 0;
   top: 0;
   will-change: transform, opacity;
-  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.18));
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.18));
   user-select: none;
 }
